@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* font starts */
 @font-face {
     font-family: 'robotoRegular';
     src: url('../../static/fonts/Roboto-Regular.ttf');
@@ -60,4 +61,37 @@
 @font-face {
     font-family: 'latoBlack';
     src: url('../../static/fonts/Lato-Black.ttf');
+}
+
+@font-face {
+    font-family: 'dancingScriptRegular';
+    src: url('../../static/fonts/DancingScript-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'dancingScriptMedium';
+    src: url('../../static/fonts/DancingScript-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'dancingScriptSemibold';
+    src: url('../../static/fonts/DancingScript-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'dancingScriptBold';
+    src: url('../../static/fonts/DancingScript-Bold.ttf');
+}
+
+/* font ends */
+
+.hamburger-center {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.hamburger-slide {
+    transition: all 0.3 linear;
 }

@@ -17,6 +17,7 @@ const config: Config = {
         'roboto': ['robotoRegular', 'robotoThin', 'robotoLight', 'robotoBold', 'robotoBlack'],
         'michroma': ['michromaRegular'],
         'lato': ['latoThin', 'latoLight', 'latoRegular', 'latoBold', 'latoBlack'],
+        'dancingScript': ['dancingScriptRegular', 'dancingScriptMedium', 'dancingScriptSemibold', 'dancingScriptBold', 'dancingScriptBlack'],
       }
     },
 
@@ -31,9 +32,11 @@ const config: Config = {
 
       'lg': '1024px',
 
-      'xl': '1280px', // desktop
+      'xl': '1200px', // desktop
 
-      '2xl': '1536px',
+      '2xl': '1280px', 
+
+      '3xl': '1536px',
     }
   },
   plugins: [],
