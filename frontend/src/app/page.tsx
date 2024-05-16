@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Header from "./component/layout/header";
 
 export default function Home() {
   return (
     <main className="bg-blue-200">
-      <h1>Hello world</h1>
+      <Header />
     </main>
   );
 }

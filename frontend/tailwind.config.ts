@@ -13,7 +13,28 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontFamily: {
+        'roboto': ['robotoRegular', 'robotoThin', 'robotoLight', 'robotoBold', 'robotoBlack'],
+        'michroma': ['michromaRegular'],
+        'lato': ['latoThin', 'latoLight', 'latoRegular', 'latoBold', 'latoBlack'],
+      }
     },
+
+    screens: {
+      'xxs': '420px', // mob
+
+      'xs': '578px',
+
+      'sm': '640px',
+
+      'md': '768px', // tab
+
+      'lg': '1024px',
+
+      'xl': '1280px', // desktop
+
+      '2xl': '1536px',
+    }
   },
   plugins: [],
 };

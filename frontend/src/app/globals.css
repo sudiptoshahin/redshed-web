@@ -2,32 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+    font-family: 'robotoRegular';
+    src: url('../../static/fonts/Roboto-Regular.ttf');
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+    font-family: 'robotoThin';
+    src: url('../../static/fonts/Roboto-Thin.ttf');
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+    font-family: 'robotoLight';
+    src: url('../../static/fonts/Roboto-Light.ttf');
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@font-face {
+    font-family: 'robotoMedium';
+    src: url('../../static/fonts/Roboto-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'robotoBold';
+    src: url('../../static/fonts/Roboto-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'robotoBlack';
+    src: url('../../static/fonts/Roboto-Black.ttf');
+}
+
+@font-face {
+    font-family: 'michromaRegular';
+    src: url('../../static/fonts/Michroma-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'latoThin';
+    src: url('../../static/fonts/Lato-Thin.ttf');
+}
+
+@font-face {
+    font-family: 'latoLight';
+    src: url('../../static/fonts/Lato-Light.ttf');
+}
+
+@font-face {
+    font-family: 'latoRegular';
+    src: url('../../static/fonts/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'latoBold';
+    src: url('../../static/fonts/Lato-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'latoBlack';
+    src: url('../../static/fonts/Lato-Black.ttf');
 }
