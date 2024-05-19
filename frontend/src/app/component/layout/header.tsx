@@ -1,14 +1,19 @@
 "use client";
 import Image from "next/image";
 import HeaderMenu from '@/app/component/layout/header-menu';
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 export default function Header() {
 
-    const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
+    const [showHamburgerMenu, setShowHamburgerMenu] = useState<boolean>(false);
+    const hamburgerSidepanelRef = useRef<HTMLDivElement>();
 
     const onHandleHamburgerMenu = () => {
         setShowHamburgerMenu(!showHamburgerMenu);
+    }
+
+    const setSidePanelRef = (sidePanel: HTMLDivElement) => {
+        hamburgerSidepanelRef.current = sidePanel;
     }
 
     return (
@@ -35,7 +40,7 @@ export default function Header() {
             {/* tab ends */}
 
             {/* desktop starts */}
-            <div className="h-[100px] bg-[#EEEEEE] w-full xl:grid grid-cols-3 gap-3 hidden">
+            <div className="h-[80px] bg-[#EEEEEE] w-full xl:grid grid-cols-3 gap-3 hidden">
                 <div className="flex items-center space-x-5 w-auto mx-auto font-lato:regular">
                     <div className="w-auto font-sm cursor-pointer">Home</div>
                     <div className="w-auto font-sm cursor-pointer">Shop</div>
