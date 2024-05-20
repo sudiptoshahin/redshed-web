@@ -5,6 +5,7 @@ import beltBg from '../../../../public/images/category/category-belt.jpg';
 import shoesBg from '../../../../public/images/category/category-shoes.jpg';
 import shadesBg from '../../../../public/images/category/category-shades.jpg';
 import suitsBg from '../../../../public/images/category/category-suits.jpg';
+import { CategoryType } from "@/app/models/categories/categorycontainer";
 
 export default function ProductCategory() {
 
@@ -39,7 +40,7 @@ export default function ProductCategory() {
     return (
         <section id="product-category">
             <div className="">
-                <CategoryContainer dataList={productCategoryData} showItems={4} itemGap={4} />
+                <CategoryContainer dataList={productCategoryData} componentType={CategoryType.categories} showItems={5} itemGap={2} />
             </div>
         </section>
     );

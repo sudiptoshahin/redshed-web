@@ -4,6 +4,7 @@ import formalBgImage from '../../../../public/images/category/formal.jpg';
 import casualBgImage from '../../../../public/images/category/casual.jpg';
 import sports1BgImage from '../../../../public/images/category/sports.jpg';
 import sports2BgImage from '../../../../public/images/category/sports2.jpg';
+import { CategoryType } from "@/app/models/categories/categorycontainer";
 
 export default function StyleTypeSection() {
 
@@ -27,7 +28,7 @@ export default function StyleTypeSection() {
     return (
         <section id="style-type">
             <div className="py-5">
-                <CategoryContainer dataList={styleCategoryData} showItems={3} itemGap={4} />
+                <CategoryContainer dataList={styleCategoryData} componentType={CategoryType.styleType} showItems={3} itemGap={4} />
             </div>
         </section>
     )

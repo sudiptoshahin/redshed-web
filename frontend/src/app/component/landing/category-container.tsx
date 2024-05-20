@@ -1,6 +1,7 @@
 
 import Category from "../layout/category"
 import { StaticImageData } from 'next/image';
+import { CategoryContainerProps, CategoryComponentType } from "@/app/models/categories/categorycontainer";
 
 type categoryObj = {
     id: number,
@@ -8,21 +9,19 @@ type categoryObj = {
     title: string
 }
 
-interface CategoryContainer {
-    dataList: categoryObj[],
-    showItems: number,
-    itemGap: number
-}
-
-export default function CategoryContainer(props: CategoryContainer) {
+export default function CategoryContainer(props: CategoryContainerProps) {
 
     return (
         <section id="category-container" className="">
-            <div className={`bg-red-200 grid grid-cols-${props.showItems} gap-${props.itemGap} place-items-center place-content-evenly`}>
+            <div className={`grid place-items-center place-content-evenly`}
+                style={{ 
+                    gridTemplateColumns: `repeat(${props.showItems}, minmax(0, 1fr))`,
+                    columnGap: `${props.itemGap}px`
+                 }}>
                 {
                     props.dataList.length > 0 ? props.dataList.map(el => {
                         return (
-                            <Category key={el?.id} url={el.image} title={el.title} componentType={0} buttonTitle='shop' />
+                            <Category key={el?.id} url={el.image} title={el.title} componentType={props.componentType} buttonTitle={el.title} />
                         );
                     }) : <></>
                 }

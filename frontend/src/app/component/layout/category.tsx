@@ -1,25 +1,14 @@
 
 import Image from "next/image";
 import { StaticImageData } from 'next/image';
+import { CategoryType, CategoryComponentProps } from "@/app/models/categories/categorycontainer";
 
-enum CategoryType {
-    styleType = 0,
-    categories = 1
-}
-
-interface CategoryModel {
-    url: string | StaticImageData,
-    title: string,
-    buttonTitle: string,
-    componentType: CategoryType
-}
-
-export default function Category(props: CategoryModel) {
+export default function Category(props: CategoryComponentProps) {
 
     return (
         <section id="category">
-            <div className="relative max-w-[389px] max-h-[295px]">
-                <Image className="w-full h-auto" src={props.url} alt="formal-type" />
+            <div className={`relative max-w-[389px] max-h-[295px] ${props.componentType === CategoryType.categories && 'mt-9 mb-24'}`}>
+                <Image className="h-auto" src={props.url} alt="formal-type" />
                 {
                     props.componentType === CategoryType.styleType ? (
                         <div className="absolute top-[35%] text-white text-center w-full">
@@ -27,7 +16,11 @@ export default function Category(props: CategoryModel) {
                             <button className="bg-[#D50000] px-10 py-1.5 uppercase">{props.buttonTitle}</button>
                         </div>
 
-                    ) : <></>
+                    ) : (
+                        <div className="absolute top-[70%] bg-white px-14 py-2 rounded-r-3xl ">
+                            <h2 className="capitalize font-medium font-michroma text-[#D50000] font-lg">{props.title}</h2>
+                        </div>
+                    )
                 }
             </div>
         </section>
