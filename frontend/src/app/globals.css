@@ -150,3 +150,8 @@
 .style-type-text-shadow {
     text-shadow: 2.5px 2.5px 3px black;
 }
+
+.navbar-fixed {
+    position: fixed;
+    z-index: 999;
+}

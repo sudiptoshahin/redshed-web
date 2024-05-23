@@ -17,8 +17,8 @@ export default function Category(props: CategoryComponentProps) {
                         </div>
 
                     ) : (
-                        <div className="absolute top-[70%] bg-white px-14 py-2 rounded-r-3xl ">
-                            <h2 className="capitalize font-medium font-michroma text-[#D50000] font-lg">{props.title}</h2>
+                        <div className="absolute top-[70%] bg-white px-14 py-1 rounded-r-3xl ">
+                            <h2 className="capitalize font-medium font-michroma text-[#D50000]" style={{ fontSize: '14px' }}>{props.title}</h2>
                         </div>
                     )
                 }
