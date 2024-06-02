@@ -4,7 +4,7 @@ import Header from "@/app/component/layout/header";
 import { ShopCategoryProduct, ProductCardType } from "@/app/models/products/shop-category";
 import ProductCard from "../../component/shops/product-card";
 import shirtHeaderImage from '../../../../public/images/category/shirts/shirt-header.jpg';
-
+import Link from "next/link";
 import { storeData } from "../../../../static/data/shop";
 
 export default function Shop() {
@@ -17,21 +17,31 @@ export default function Shop() {
                 <Header />
             </div>
             {/* shop nav starts */}
-            <div className="my-2.5 h-[35px] bg-[#D50000] content-center px-24 text-white font-lato:regular text-[10px]">
+            <div className="my-2.5 h-[35px] bg-[#D50000] content-center px-24 text-white font-lato:regular text-[10px] fixed w-full z-[999]">
+                <hr className="w-[100%] bg-white" />
                 <span className="px-2.5 hover:font-bold cursor-pointer">Jump to </span>
                 <span>&gt;</span>
-                <span className="px-2.5 hover:font-bold cursor-pointer">Shirts</span>
+                <Link href={'#shirts-cat'}>
+                    <span className="px-2.5 hover:font-bold cursor-pointer">Shirts</span>
+                </Link>
                 <span>&gt;</span>
-                <span className="px-2.5 hover:font-bold cursor-pointer">Pants</span>
+                <Link href={'#pants-cat'}>
+                    <span className="px-2.5 hover:font-bold cursor-pointer">Pants</span>
+                </Link>
                 <span>&gt;</span>
-                <span className="px-2.5 hover:font-bold cursor-pointer">Belts</span>
+                <Link href={'#belts-cat'}>
+                    <span className="px-2.5 hover:font-bold cursor-pointer">Belts</span>
+                </Link>
                 <span>&gt;</span>
-                <span className="px-2.5 hover:font-bold cursor-pointer">Suits</span>
+                <Link href={'#suits-cat'}>
+                    <span className="px-2.5 hover:font-bold cursor-pointer">Suits</span>
+                </Link>
+                <hr className="w-[100%] bg-white" />
             </div>
             {/* shop nav ends */}
-            <div className="px-24">
+            <div className="px-24 mt-[80px]">
                 {/* shirt starts */}
-                <div className="flex justify-around flex-wrap space-y-5">
+                <div id="shirts-cat" className="flex justify-between flex-wrap space-y-5">
                     <ProductCard
                         image={storeData.shirts.categoryImage}
                         type={ProductCardType.HEADER}
@@ -59,7 +69,7 @@ export default function Shop() {
                 {/* shirt ends */}
 
                 {/* pants starts */}
-                <div className="flex justify-around flex-wrap space-y-5 my-[22px]">
+                <div id="pants-cat" className="flex justify-between flex-wrap space-y-5 my-[22px]">
                     <ProductCard
                         image={storeData.pants.categoryImage}
                         type={ProductCardType.HEADER}
@@ -87,7 +97,7 @@ export default function Shop() {
                 {/* pants ends */}
 
                 {/* belts starts */}
-                <div className="flex justify-around flex-wrap space-y-5 my-[22px]">
+                <div id="belts-cat" className="flex justify-between flex-wrap space-y-5 my-[22px]">
                     <ProductCard
                         image={storeData.belts.categoryImage}
                         type={ProductCardType.HEADER}
@@ -115,7 +125,7 @@ export default function Shop() {
                 {/* belts ends */}
 
                 {/* suits starts */}
-                <div className="flex justify-around flex-wrap space-y-5 my-[22px]">
+                <div id="suits-cat" className="flex justify-between flex-wrap space-y-5 my-[22px]">
                     <ProductCard
                         image={storeData.suits.categoryImage}
                         type={ProductCardType.HEADER}

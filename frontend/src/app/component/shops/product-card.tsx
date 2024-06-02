@@ -7,7 +7,7 @@ export default function ProductCard({ title, image, type, headline, category, pr
 
     return (
         <section id="product-card">
-            <div className="w-[400px] xl:w-[300px]">
+            <div className="xl:w-[300px] 2xl:w-[400px]">
                 <Image priority src={image} alt={type} className="w-full" width={300} height={200} />
                 {/* headline */}
                 {

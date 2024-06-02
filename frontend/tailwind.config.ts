@@ -34,9 +34,9 @@ const config: Config = {
 
       'xl': '1200px', // desktop
 
-      '2xl': '1280px', 
+      '2xl': '1400px', 
 
-      '3xl': '1536px',
+      '3xl': '1600',
     }
   },
   plugins: [],
