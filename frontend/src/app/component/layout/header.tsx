@@ -40,7 +40,8 @@ export default function Header() {
             {/* tab ends */}
 
             {/* desktop starts */}
-            <div className="h-[80px] bg-[#EEEEEE] w-full xl:grid grid-cols-3 gap-3 hidden navbar-fixed">
+            {/* navbar-fixed */}
+            <div className="h-[80px] bg-[#EEEEEE] w-full xl:grid grid-cols-3 gap-3 hidden fixed z-10">
                 <div className="flex items-center space-x-5 w-auto mx-auto font-lato:regular">
                     <div className="w-auto font-sm cursor-pointer">Home</div>
                     <div className="w-auto font-sm cursor-pointer">Shop</div>
