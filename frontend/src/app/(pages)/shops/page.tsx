@@ -17,31 +17,36 @@ export default function Shop() {
                 <Header />
             </div>
             {/* shop nav starts */}
-            <div className="my-2.5 h-[35px] bg-[#D50000] content-center px-24 text-white font-lato:regular text-[10px] fixed w-full z-[999]">
-                <hr className="w-[100%] bg-white" />
-                <span className="px-2.5 hover:font-bold cursor-pointer">Jump to </span>
-                <span>&gt;</span>
-                <Link href={'#shirts-cat'}>
-                    <span className="px-2.5 hover:font-bold cursor-pointer">Shirts</span>
-                </Link>
-                <span>&gt;</span>
-                <Link href={'#pants-cat'}>
-                    <span className="px-2.5 hover:font-bold cursor-pointer">Pants</span>
-                </Link>
-                <span>&gt;</span>
-                <Link href={'#belts-cat'}>
-                    <span className="px-2.5 hover:font-bold cursor-pointer">Belts</span>
-                </Link>
-                <span>&gt;</span>
-                <Link href={'#suits-cat'}>
-                    <span className="px-2.5 hover:font-bold cursor-pointer">Suits</span>
-                </Link>
-                <hr className="w-[100%] bg-white" />
+            <div className="fixed w-full z-[999]">
+                <div className="relative">
+
+                    {/* bg-[#D50000] */}
+                    <div className="absolute border-t border-t-white border-t-[1px] border-b border-b-white border-b-[1px] my-2.5 h-[30px] content-center px-24 text-white font-lato:regular text-[10px] w-full z-20">
+                        <span className="px-2.5 cursor-default">Jump to </span>
+                        <span className="cursor-default">&gt;</span>
+                        <Link href={'#shirts-cat'}>
+                            <span className="px-2.5 hover:font-bold cursor-pointer">Shirts</span>
+                        </Link>
+                        <span className="cursor-default">&gt;</span>
+                        <Link href={'#pants-cat'}>
+                            <span className="px-2.5 hover:font-bold cursor-pointer">Pants</span>
+                        </Link>
+                        <span className="cursor-default">&gt;</span>
+                        <Link href={'#belts-cat'}>
+                            <span className="px-2.5 hover:font-bold cursor-pointer">Belts</span>
+                        </Link>
+                        <span className="cursor-default">&gt;</span>
+                        <Link href={'#suits-cat'}>
+                            <span className="px-2.5 hover:font-bold cursor-pointer">Suits</span>
+                        </Link>
+                    </div>
+                    <div className="absolute bg-[#D50000] w-full h-[40px] top-[5px] z-10 opacity-[75%]"></div>
+                </div>
             </div>
             {/* shop nav ends */}
             <div className="px-24 mt-[80px]">
                 {/* shirt starts */}
-                <div id="shirts-cat" className="flex justify-between flex-wrap space-y-5">
+                <div id="shirts-cat" className="flex items-center justify-between flex-wrap space-y-5">
                     <ProductCard
                         image={storeData.shirts.categoryImage}
                         type={ProductCardType.HEADER}
@@ -69,7 +74,7 @@ export default function Shop() {
                 {/* shirt ends */}
 
                 {/* pants starts */}
-                <div id="pants-cat" className="flex justify-between flex-wrap space-y-5 my-[22px]">
+                <div id="pants-cat" className="flex items-center justify-between flex-wrap space-y-5 my-[22px]">
                     <ProductCard
                         image={storeData.pants.categoryImage}
                         type={ProductCardType.HEADER}
@@ -97,7 +102,7 @@ export default function Shop() {
                 {/* pants ends */}
 
                 {/* belts starts */}
-                <div id="belts-cat" className="flex justify-between flex-wrap space-y-5 my-[22px]">
+                <div id="belts-cat" className="flex items-center justify-between flex-wrap space-y-5 my-[22px]">
                     <ProductCard
                         image={storeData.belts.categoryImage}
                         type={ProductCardType.HEADER}
@@ -125,7 +130,7 @@ export default function Shop() {
                 {/* belts ends */}
 
                 {/* suits starts */}
-                <div id="suits-cat" className="flex justify-between flex-wrap space-y-5 my-[22px]">
+                <div id="suits-cat" className="flex items-center justify-between flex-wrap space-y-5 my-[22px]">
                     <ProductCard
                         image={storeData.suits.categoryImage}
                         type={ProductCardType.HEADER}
