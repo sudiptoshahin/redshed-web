@@ -67,7 +67,9 @@ export default function Header() {
                             <span className="font-dancingScript font-semibold font-[5px] capitalize cursor-pointer"> refer a friend</span>
                         </div>
                     </Link>
-                    <div className="font-lato:regular font-sm cursor-pointer">About us</div>
+                    <Link href={'/about'}>
+                        <div className="font-lato:regular font-sm cursor-pointer">About us</div>
+                    </Link>
                     <div>
                         <Image className="cursor-pointer" src={'/images/icons/user.svg'} width={25} height={25} alt="user" />
                     </div>
