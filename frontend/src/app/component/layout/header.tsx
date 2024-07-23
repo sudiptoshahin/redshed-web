@@ -27,8 +27,8 @@ export default function Header() {
                 ) : <></>
             }
             {/* tab starts */}
-            <div className="flex items-center justify-between w-full h-[70px] 
-            bg-[#EEEEEE] block xl:hidden">
+            <div className="flex items-center justify-between xl:hidden w-full h-[70px] 
+            bg-[#EEEEEE]">
                 <div className="p-5 cursor-pointer" onClick={onHandleHamburgerMenu}>
                     <Image src={'/images/icons/hamburger.svg'} 
                     width={24} height={24} alt="menu" />
@@ -44,7 +44,7 @@ export default function Header() {
 
             {/* desktop starts */}
             {/* navbar-fixed */}
-            <div className="h-[80px] bg-[#EEEEEE] w-full xl:grid grid-cols-3 gap-3 hidden fixed z-10">
+            <div className="hidden xl:grid xl:grid-cols-3 xl:gap-0 xl:z-10 xl:fixed h-[80px] w-full bg-[#EEEEEE]">
                 <div className="flex items-center space-x-5 w-auto mx-auto font-lato:regular">
                     <Link href={'/'}>
                         <div className="w-auto font-sm cursor-pointer">Home</div>

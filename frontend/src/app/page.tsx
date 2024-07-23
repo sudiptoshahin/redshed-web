@@ -19,7 +19,7 @@ export default function Home() {
       <TopFeature />
       <StyleTypeSection />
       <FreeShippingOnOrder />
-      {/* <ProductCategory /> */}
+      <ProductCategory />
       {/* <OfferGallery /> */}
       {/* <OurSupports />
       <Footer /> */}
