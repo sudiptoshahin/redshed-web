@@ -40,7 +40,8 @@ export default function ProductCategory() {
     return (
         <section id="product-category">
             <div className="">
-                <CategoryContainer dataList={productCategoryData} componentType={CategoryType.categories} showItems={5} itemGap={2} />
+                <CategoryContainer dataList={productCategoryData} 
+                componentType={CategoryType.categories} />
             </div>
         </section>
     );

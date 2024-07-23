@@ -19,7 +19,6 @@ export default function Header() {
 
     return (
         <section id="header">
-
             {
                 showHamburgerMenu === true ? (
                     <div className="w-auto">
@@ -27,16 +26,17 @@ export default function Header() {
                     </div>
                 ) : <></>
             }
-
-
             {/* tab starts */}
-            <div className="w-full h-[70px] bg-[#EEEEEE] md:block xl:hidden relative">
-                <div className="hamburger-center p-5 cursor-pointer" onClick={onHandleHamburgerMenu}>
-                    <Image src={'/images/icons/hamburger.svg'} width={25} height={25} alt="menu" />
+            <div className="flex items-center justify-between w-full h-[70px] 
+            bg-[#EEEEEE] block xl:hidden">
+                <div className="p-5 cursor-pointer" onClick={onHandleHamburgerMenu}>
+                    <Image src={'/images/icons/hamburger.svg'} 
+                    width={24} height={24} alt="menu" />
                 </div>
-                <div className="absolute left-[40%] top-1">
+                <div className="mx-0 mx-auto">
                     <Link href={'/'}>
-                        <Image src={'/images/logo.svg'} height={52} width={196} alt="logo" />
+                        <Image src={'/images/logo.svg'} 
+                        height={52} width={196} alt="logo" />
                     </Link>
                 </div>
             </div>

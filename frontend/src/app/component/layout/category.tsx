@@ -1,19 +1,20 @@
 
 import Image from "next/image";
-import { StaticImageData } from 'next/image';
-import { CategoryType, CategoryComponentProps } from "@/app/models/categories/categorycontainer";
+// import { StaticImageData } from 'next/image';
+import { CategoryType, CategoryComponentProps } from 
+"@/app/models/categories/categorycontainer";
 
 export default function Category(props: CategoryComponentProps) {
 
     return (
-        <section id="category">
+        <section>
             <div className={`${props.componentType === CategoryType.categories && 
             'mt-9 mb-24'} relative aspect-[1.51162] w-full `}>
-                {/* max-w-[389px] max-h-[295px]  */}
-                <Image className="w-full h-full" src={props.url} alt="formal-type" />
+                <Image className="w-full h-full" 
+                    src={props.url} alt="formal-type"
+                    loading="lazy" />
                 {
                     props.componentType === CategoryType.styleType ? (
-                        // text-white text-center w-full
                         <div className="absolute w-full top-0 text-white">
                             <div className="aspect-[1.5760] w-full text-center 
                             content-center">

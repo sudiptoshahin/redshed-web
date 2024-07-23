@@ -14,8 +14,6 @@ export enum CategoryType {
 
 export interface CategoryContainerProps {
     dataList: categoryObj[],
-    showItems: number | 2,
-    itemGap: number,
     height?: number | null,
     width?: number | null,
     componentType: CategoryType

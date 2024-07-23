@@ -22,7 +22,7 @@ const config: Config = {
     },
 
     screens: {
-      'xxs': '420px', // mob
+      '2xs': '420px', // mob
 
       'xs': '578px',
 
