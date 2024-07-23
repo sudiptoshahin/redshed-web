@@ -26,9 +26,10 @@ export default function StyleTypeSection() {
         }
     ]
     return (
-        <section id="style-type">
+        <section>
             <div className="py-5">
-                <CategoryContainer dataList={styleCategoryData} componentType={CategoryType.styleType} showItems={3} itemGap={4} />
+                <CategoryContainer dataList={styleCategoryData} 
+                componentType={CategoryType.styleType} showItems={3} itemGap={4} />
             </div>
         </section>
     )

@@ -14,19 +14,15 @@ export default function Home() {
     // <main className="bg-blue-200">
     //   <Header />
     // </main>
-    <html>
-      <body>
-        <main className="">
-          <Header />
-          <TopFeature />
-          <StyleTypeSection />
-          <FreeShippingOnOrder />
-          <ProductCategory />
-          <OfferGallery />
-          <OurSupports />
-          <Footer />
-        </main>
-      </body>
-    </html>
+    <main className="">
+      <Header />
+      <TopFeature />
+      <StyleTypeSection />
+      <FreeShippingOnOrder />
+      <ProductCategory />
+      <OfferGallery />
+      <OurSupports />
+      <Footer />
+    </main>
   );
 }
