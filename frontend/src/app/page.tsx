@@ -20,9 +20,9 @@ export default function Home() {
       <StyleTypeSection />
       <FreeShippingOnOrder />
       <ProductCategory />
-      {/* <OfferGallery /> */}
-      {/* <OurSupports />
-      <Footer /> */}
+      <OfferGallery />
+      <OurSupports />
+      <Footer />
     </main>
   );
 }

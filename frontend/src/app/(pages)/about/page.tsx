@@ -13,13 +13,13 @@ export default function About() {
             <div className="xl:pb-[80px]">
                 <Header />
             </div>
-            <div className="bg-red-200 mx-[50px]">
+            <div className="mx-[50px]">
                 <div className="bg-[#DD3333] text-white font-lato:regular font-bold text-[16px] flex space-x-5 justify-center py-[10px]">
                     <h2>Our story</h2>
                     <h2>factory partner</h2>
                     <h2>locations</h2>
                 </div>
-                <div className="bg-green-200 grid grid-cols-2 place-items-center">
+                <div className="grid grid-cols-2 place-items-center">
                     <Image src={aboutImage1} className='justify-start' alt='about-1' />
                     <div className='font-roboto:regular text-black w-[350px]'>
                         <h2 className='text-[40px] font-bold'>We couldn&apos;t find a shirt that fit</h2>

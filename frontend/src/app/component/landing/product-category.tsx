@@ -9,7 +9,7 @@ import { CategoryType } from "@/app/models/categories/categorycontainer";
 
 export default function ProductCategory() {
 
-    const productCategoryData = [
+    const productTypes = [
         {
             id: 1,
             image: shirtBg,
@@ -38,10 +38,18 @@ export default function ProductCategory() {
     ]
 
     return (
-        <section id="product-category">
+        // <section id="product-category">
+        //     <div className="">
+        //     {/* productCategoryData */}
+        //         <CategoryContainer dataList={productCategoryData} 
+        //         componentType={CategoryType.categories} />
+        //     </div>
+        // </section>
+        <section>
             <div className="">
-                <CategoryContainer dataList={productCategoryData} 
-                componentType={CategoryType.categories} />
+                {/* {
+                    productTypes.map()
+                } */}
             </div>
         </section>
     );
