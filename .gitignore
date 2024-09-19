@@ -1,0 +1,6 @@
+/env
+/.idea/
+/backend/backend/__pycache__/
+/backend/client/__pycache__/
+/backend/admin/__pycache__/
+*/__pycache__/

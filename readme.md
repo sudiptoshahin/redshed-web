@@ -1,1 +1,1 @@
-![landing-page](./landing.png"landing")
+![landing-page](/landing.png"landing")
