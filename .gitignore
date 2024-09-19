@@ -4,3 +4,4 @@
 /backend/client/__pycache__/
 /backend/admin/__pycache__/
 */__pycache__/
+*/pyc
