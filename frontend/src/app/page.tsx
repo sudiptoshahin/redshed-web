@@ -8,9 +8,6 @@ import OurSupports from "./component/landing/our-supports";
 
 export default function Home() {
   return (
-    // <main className="bg-blue-200">
-    //   <Header />
-    // </main>
     <div className="">
       <TopFeature />
       <StyleTypeSection />
