@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
 
-
 class Category(models.Model):
     title = models.CharField(required=True, max_length=50)
     image = models.CharField(null=True)
