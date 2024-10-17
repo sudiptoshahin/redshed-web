@@ -3,6 +3,7 @@ import Image from "next/image";
 import HeaderMenu from '@/app/component/layout/header-menu';
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import logoImg from "../../../../public/images/logo.svg";
 
 export default function Header() {
 
@@ -27,16 +28,15 @@ export default function Header() {
                 ) : <></>
             }
             {/* tab starts */}
-            <div className="flex items-center justify-between xl:hidden w-full h-[70px] 
-            bg-[#EEEEEE]">
-                <div className="p-5 cursor-pointer" onClick={onHandleHamburgerMenu}>
+            <div className="w-full flex items-center justify-between xl:hidden h-[70px] 
+            bg-[#EEEEEE] relative">
+                <div className="p-5 cursor-pointer z-10" onClick={onHandleHamburgerMenu}>
                     <Image src={'/images/icons/hamburger.svg'} 
                     width={24} height={24} alt="menu" />
                 </div>
-                <div className="mx-0 mx-auto">
+                <div className="w-full absolute flex items-center justify-center">
                     <Link href={'/'}>
-                        <Image src={'/images/logo.svg'} 
-                        height={52} width={196} alt="logo" />
+                        <Image src={logoImg} alt="logo" className="w-[150px] h-[70px]" />
                     </Link>
                 </div>
             </div>

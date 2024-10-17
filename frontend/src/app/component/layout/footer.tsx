@@ -16,41 +16,56 @@ export default function Footer() {
 
     return (
         <footer id="footer">
-            <div className="grid grid-cols-4 gap-3 px-4 bg-[#F2F2F2] h-[300px]">
-                <div className="pt-5">
-                    <Image src={brandImage} alt="logo" />
+            <div className="w-full xl:grid xl:grid-cols-4 xl:gap-3 xl:px-4 
+            xl:h-[300px] bg-[#F2F2F2] xl:bg-blue-300 z-20">
+                <div className="w-full px-3 xl:px-0 xl:pt-5 bg-[#F2F2F2]">
+                    <Image src={brandImage} className="mt-2 mb-5 h-[50px] w-[200px]" 
+                    alt="logo" />
                     <div className="">
-                        <h1 className="text-black opacity-75 font-lato:semibold pt-5 pb-2" style={{ fontSize: 'x-large', fontWeight: '600' }}>We support</h1>
-                        <Image src={paymentOptionImage} alt="payment-option" />
+                        <h1 className="font-[600] text-[18px] opacity-75 font-lato:semibold 
+                        pt-5 pb-2">
+                            We support
+                        </h1>
+                        <Image src={paymentOptionImage} className="py-3 xl:py-0" alt="payment-option" />
                     </div>
                 </div>
-                <div className="pt-5">
-                    <h1 className="uppercase text-black font-lato:bold" style={{ fontSize: 'x-large', fontWeight: '600' }}>customer service</h1>
+                <div className="pt-5 px-3 xl:px-0">
+                    <h1 className="uppercase font-[600] text-black font-lato:bold">
+                        customer service
+                    </h1>
                     <ul className="">
-                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 pt-3" style={{ fontSize: '16px' }}>about us</li>
-                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 pt-3" style={{ fontSize: '16px' }}>faq</li>
-                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 pt-3" style={{ fontSize: '16px' }}>my account</li>
-                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 pt-3" style={{ fontSize: '16px' }}>contact us</li>
+                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">about us</li>
+                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">faq</li>
+                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">my account</li>
+                        <li className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">contact us</li>
                     </ul>
                 </div>
-                <div className="pt-5">
-                    <h1 className="uppercase text-black font-lato:bold" style={{ fontSize: 'x-large', fontWeight: '600' }}>social</h1>
+                <div className="pt-5 px-3 xl:px-0">
+                    <h1 className="uppercase font-[600] text-black font-lato:bold">social</h1>
                     <ul className="">
-                        <li className="flex items-center opacity-50 pt-3" style={{ fontSize: '16px' }}>
+                        <li className="flex items-center opacity-50 pt-3 space-x-[5px] xl:space-x-0" style={{ fontSize: '16px' }}>
                             <Image src={instagramIcon} alt="instagram" />
-                            <span className="capitalize font-lato:regular text-[#000000] px-2">Instagram</span>
+                            <span className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">Instagram</span>
                         </li>
-                        <li className="flex items-center opacity-50 pt-3" style={{ fontSize: '16px' }}>
+                        <li className="flex items-center opacity-50 pt-3 space-x-[5px] xl:space-x-0" style={{ fontSize: '16px' }}>
                             <Image src={facebookIcon} alt="instagram" />
-                            <span className="capitalize font-lato:regular text-[#000000] px-2">facebook</span>
+                            <span className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">facebook</span>
                         </li>
-                        <li className="flex items-center opacity-50 pt-3" style={{ fontSize: '16px' }}>
+                        <li className="flex items-center opacity-50 pt-3 space-x-[5px] xl:space-x-0" style={{ fontSize: '16px' }}>
                             <Image src={twitterIcon} alt="instagram" />
-                            <span className="capitalize font-lato:regular text-[#000000] px-2">twitter</span>
+                            <span className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">twitter</span>
                         </li>
-                        <li className="flex items-center opacity-50 pt-3" style={{ fontSize: '16px' }}>
+                        <li className="flex items-center opacity-50 pt-3 space-x-[5px] xl:space-x-0" style={{ fontSize: '16px' }}>
                             <Image src={pinterestIcon} alt="instagram" />
-                            <span className="capitalize font-lato:regular text-[#000000] px-2">pinterest</span>
+                            <span className="capitalize font-lato:regular text-[#000000] opacity-50 
+                        pt-[2px] xl:pt-3 text-[12px] md:text-[14px] xl:text-[16px]">pinterest</span>
                         </li>
                     </ul>
                 </div>
