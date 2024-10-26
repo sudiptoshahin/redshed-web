@@ -23,7 +23,7 @@ export default function RootLayout({
         <Suspense>
           <Header />
         </Suspense>
-        <main className={`${inter.className} min-h-[70vh] h-auto xl:pt-[80px]`}>
+        <main className={`${inter.className} min-h-[70vh] xl:pt-[80px]`}>
           {children}
         </main>
         <Footer />

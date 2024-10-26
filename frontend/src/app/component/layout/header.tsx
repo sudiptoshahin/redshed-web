@@ -19,7 +19,7 @@ export default function Header() {
     }
 
     return (
-        <section>
+        <section className="z-50">
             {
                 showHamburgerMenu === true ? (
                     <div className="w-auto">
@@ -28,7 +28,7 @@ export default function Header() {
                 ) : <></>
             }
             {/* tab starts */}
-            <div className="w-full flex items-center justify-between xl:hidden h-[70px] 
+            <div className="z-50 w-full flex items-center justify-between xl:hidden h-[70px] 
             bg-[#EEEEEE] relative">
                 <div className="p-5 cursor-pointer z-10" onClick={onHandleHamburgerMenu}>
                     <Image src={'/images/icons/hamburger.svg'} 
