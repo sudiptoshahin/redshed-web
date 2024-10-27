@@ -13,11 +13,11 @@ export default function Shop() {
 
     return (
         <section id="shop">
-            <div className="xl:pb-[80px]">
+            {/* <div className="xl:pb-[80px]">
                 <Header />
-            </div>
+            </div> */}
             {/* shop nav starts */}
-            <div className="fixed w-full z-[999]">
+            <div className="fixed w-full z-[999] top-[80px]">
                 <div className="relative">
 
                     {/* bg-[#D50000] */}
