@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'red-rgba': 'rgba(213, 0, 0, 0.5)'
+        'red-rgba': 'rgba(213, 0, 0, 0.5)',
+        'white-rbga': 'rgba(255, 255, 255, 0.9)'
       },
 
       backgroundImage: {
