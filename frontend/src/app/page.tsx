@@ -13,8 +13,10 @@ export default function Home() {
       <StyleTypeSection />
       <FreeShippingOnOrder />
       <ProductCategory />
-      <OfferGallery />
-      <OurSupports />
+      <div className="hidden xl:block">
+        <OfferGallery />
+        <OurSupports />
+      </div>
     </div>
   );
 }
