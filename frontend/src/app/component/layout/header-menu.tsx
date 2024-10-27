@@ -20,7 +20,7 @@ export default function HeaderMenu() {
 
     return (
         <section id="header-menu relative">
-            <div className="z-20 w-[300px] h-[100vh] absolute top-[70px] bg-white-rbga hamburger-slide">
+            <div className="z-20 w-[300px] h-[100vh] absolute top-[70px] bg-white-rbga hamburger-slide xl:hidden">
                 {/* profile */}
                 <div className="p-5 flex items-center space-x-[20px] bg-red-rgba rounded-r-[5px]">
                     <div className="">
