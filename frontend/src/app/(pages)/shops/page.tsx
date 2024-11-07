@@ -13,14 +13,9 @@ export default function Shop() {
 
     return (
         <section id="shop">
-            {/* <div className="xl:pb-[80px]">
-                <Header />
-            </div> */}
             {/* shop nav starts */}
             <div className="fixed w-full z-[999] top-[80px]">
                 <div className="relative">
-
-                    {/* bg-[#D50000] */}
                     <div className="absolute border-t border-t-white border-t-[1px] border-b border-b-white border-b-[1px] my-2.5 h-[30px] content-center px-24 text-white font-lato:regular text-[10px] w-full z-20">
                         <span className="px-2.5 cursor-default">Jump to </span>
                         <span className="cursor-default">&gt;</span>
