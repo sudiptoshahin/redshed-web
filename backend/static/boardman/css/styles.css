@@ -1,0 +1,9 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+div {
+    background-color: rgb(137, 26, 212);
+    height: 300px;
+    width: 500px;
+}
