@@ -1,15 +1,29 @@
+{% extends 'boardman/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'boardman/css/styles.css' %}">
-</head>
-<body>
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
 
-    <div class="div">Hello World</div>
- 
-</body>
-</html>
+<div class="relative w-full h-full">
+    <div class="login-container absolute">
+        <div class="login-content">
+            <img src="{% static 'images/logo.svg' %}" class="logo" />
+            <div class="inputs">
+                <input type="text" class="username" 
+                    name="username" placeholder="Username">
+                <input type="text" class="password" 
+                    name="password" placeholder="password">
+                <input type="submit" value="Login">
+            </div>
+        </div>
+    </div>
+    <!-- background -->
+    <div class="relative">
+        <div class="w-full h-full login-bg absolute"></div>
+        <img src="{% static 'images/login_bg.jpg' %}" class="login-bg-img" />
+    </div>
+</div>
+
+
+{% endblock %}

@@ -5,3 +5,7 @@ from django.shortcuts import render
 
 def admin_login(request):
     return render(request, 'boardman/login.html')
+
+
+def admin_dashboard(request):
+    return render(request, 'boardman/dashboard.html')
