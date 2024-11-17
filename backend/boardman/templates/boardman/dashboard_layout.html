@@ -1,0 +1,73 @@
+{% extends 'boardman/base.html' %}
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<section class="dashboard-main">
+    <div class="dashboard-menus">
+        <!-- logo -->
+        <div class="w-full text-center logo-container">
+            <img src="{% static 'images/logo.svg' %}" class="logo-dash" />
+        </div>
+        <!-- logo ends -->
+        <div class="dashboard-menu-items">
+            <h1 class="dashboard-title">Menu</h1>
+            <a href="{% url 'admin-dashboard-overview' %}" class="dashboard-menu-item-link">
+                <div class="dashboard-menu-item">
+                    <img src="{% static 'images/icons/overview.svg' %}" alt="overview"
+                        class="dashboard-menu-item-icon" />
+                    <div class="dashboard-menu-item-title">Overview</div>
+                </div>
+            </a>
+
+            <div class="dashboard-menu-item">
+                <img src="{% static 'images/icons/statistics.svg' %}" alt="overview" class="dashboard-menu-item-icon" />
+                <div class="dashboard-menu-item-title">Statistics</div>
+            </div>
+
+            <div class="dashboard-menu-item">
+                <img src="{% static 'images/icons/customers.svg' %}" alt="overview" class="dashboard-menu-item-icon" />
+                <div class="dashboard-menu-item-title">Customers</div>
+            </div>
+
+            <div class="dashboard-menu-item">
+                <img src="{% static 'images/icons/inventory.svg' %}" alt="overview" class="dashboard-menu-item-icon" />
+                <div class="dashboard-menu-item-title">
+                    <div class="dashboard-dropdown">
+                        <div onclick='onHandleInventroyDropdown()'
+                            class="dashboard-dropbtn dashboard-menu-item-title relative">
+                            Inventory
+                            <img src="{% static 'images/icons/dropdown.svg' %}" alt="dropdown" class="absolute top-5px">
+                        </div>
+                        <div id="inventorySettingDropdown" class="dashboard-dropdown-content">
+                            <a href="{% url 'admin-inventory-category' %}">Category</a>
+                            <a href="{% url 'admin-inventory-type' %}">Type</a>
+                            <a href="#">Product</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="dashboard-title">General</h1>
+            <div class="dashboard-menu-item">
+                <img src="{% static 'images/icons/settings.svg' %}" alt="overview" class="dashboard-menu-item-icon" />
+                <div class="dashboard-menu-item-title">Settings</div>
+            </div>
+
+            <div class="dashboard-menu-item">
+                <img src="{% static 'images/icons/security.svg' %}" alt="overview" class="dashboard-menu-item-icon" />
+                <div class="dashboard-menu-item-title">Security</div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard-menus-section">
+        {% block dashboard_section %}
+
+        {% endblock %}
+    </div>
+</section>
+
+{% endblock %}

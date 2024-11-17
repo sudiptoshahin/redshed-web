@@ -8,4 +8,12 @@ def admin_login(request):
 
 
 def admin_dashboard(request):
-    return render(request, 'boardman/dashboard.html')
+    return render(request, 'boardman/overview.html')
+
+
+def admin_inventory_type(request):
+    return render(request, 'boardman/inventory/type.html')
+
+
+def admin_inventory_category(request):
+    return render(request, 'boardman/inventory/category.html')
