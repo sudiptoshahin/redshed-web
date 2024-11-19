@@ -1,10 +1,28 @@
 {% extends 'boardman/dashboard_layout.html' %}
+{% load static %}
 
 {% block dashboard_section %}
-<section class="menu-container">
+<section class="dashboard-menu-container">
     <div class="dashboard-header">
-        <div class="dashboard-header-title">Title</div>
-        <div class="dashboard-header-menus">User / search / notification</div>
+        <div class="dashboard-header-title">
+            {% block dashboard_header_title %}{% endblock %}
+        </div>
+        <div class="dashboard-header-menus">
+            <!-- User / search / notification -->
+            <div class="dashboard-header-notification">
+                <img src="{% static 'images/icons/notifications.svg' %}" alt="notification" />
+             </div>
+
+             <div class="dashboard-header-user">
+                <img src="{% static 'images/icons/users.svg' %}" alt="user" />
+             </div>
+             
+             <!-- search box -->
+              <div class="dashboard-menu-search-box">
+                <img src="{% static 'images/icons/search.svg' %}" alt="search" />
+                <input type="text" placeholder="Search...">
+              </div>
+        </div>
     </div>
 
     <div class="">

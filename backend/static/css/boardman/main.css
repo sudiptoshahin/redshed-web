@@ -249,33 +249,38 @@
     outline: none;
     box-shadow: none;
     cursor: pointer;
-  }
-  
-  .dashboard-dropdown {
+}
+
+.dashboard-dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dashboard-dropdown-content {
+}
+
+.dashboard-dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  
-  .dashboard-dropdown-content a {
+}
+
+.dashboard-dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dashboard-dropdown a:hover {background-color: #ddd;}
-  
-  .show {display: block;}
+}
+
+.dashboard-dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
 /* menu dropdown ends */
 
 .dashboard-menu-item-link {
@@ -283,6 +288,161 @@
     color: black;
 }
 
+.dashboard-menu-container {
+    background-color: #F9F7F7;
+    margin-left: 10px;
+}
+
 .dashboard-header {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    font-family: "Lato", sans-serif;
+}
+
+.dashboard-header-title {
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    color: #707793;
+}
+
+.dashboard-menu-search-box {
+    background-color: #EAE8E8;
+    display: flex;
+    align-items: center;
+    padding: 7px 10px;
+    border-radius: 10px;
+}
+
+.dashboard-menu-search-box input {
+    height: 25px;
+    min-width: 100px;
+    outline: none;
+    border: none;
+    text-indent: 10px;
+    border-radius: 10px;
+    background-color: #EAE8E8;
+    color: black;
+}
+
+.dashboard-header-menus {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-header-user {
+    margin: 0 10px 0 10px;
+}
+
+.dashboard-types {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.dashboard-type-item {
+    background-color: white;
+    aspect-ratio: 1.4;
+    width: 30%;
+    height: auto;
+    max-height: 188px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 0px 3px rgba(92, 92, 92, 0.5);
+}
+
+.dashboard-type-container {
+    max-width: 200px;
+    max-height: 140px;
+}
+
+.dashboard-type-img {
+    aspect-ratio: 2;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.dashboard-title-text {
+    text-transform: uppercase;
+    color: #313B5E;
+    font-size: large;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    padding: 10px 0;
+    cursor: default;
+}
+
+.dashboard-title-text:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.dashboard-types-table {
+    background: white;
+    margin: 10px 30px;
+    border-radius: 10px;
+}
+
+.dash-types-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Lato", sans-serif;
+    padding: 20px;
+}
+
+.dash-header-title {
+    font-size: large;
+    color: #313B5E;
+    text-transform: capitalize;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    line-height: 32px;
+}
+
+.dash-types-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dash-types-table td,
+.dash-types-table th {
+    border-top: 1px solid #9c4040;
+    border-bottom: 1px solid #9c4040;
+    padding: 8px;
+    text-align: center;
+    font-family: "Lato", sans-serif;
+    font-size: small;
+}
+
+.dash-types-table tr:nth-child(1) {
+    border: none;
+}
+
+.dash-types-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.dash-types-table tr:hover {
+    background-color: #ddd;
+}
+
+.dash-types-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    color: #313B5E;
+    font-size: medium;
+    font-family: "Lato", sans-serif;
 }
