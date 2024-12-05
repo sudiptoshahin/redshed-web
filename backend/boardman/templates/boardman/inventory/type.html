@@ -30,7 +30,10 @@
     <div class="dashboard-types-table">
         <div class="dash-types-table-header">
             <div class="dash-header-title">All Types List</div>
-            <div class="dash-header-add-filter">Add type / Filter</div>
+            <div class="dash-header-add-filter">
+                <!-- Add type / Filter -->
+                <button class="dash-header-add-btn">Add type</button>
+            </div>
         </div>
 
         <table class="dash-types-table">
@@ -44,13 +47,37 @@
                 <td>Formal</td>
                 <td>Active</td>
                 <td>12-11-24</td>
-                <td>View / Edit / Delete</td>
+                <td>
+                    <div class="action-container">
+                        <div class="view-container">
+                            <img src="{% static 'images/icons/view.svg' %}" alt="view" />
+                        </div>
+                        <div class="edit-container">
+                            <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
+                        </div>
+                        <div class="delete-container">
+                            <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
+                        </div>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Casual</td>
                 <td>Deactive</td>
                 <td>12-11-24</td>
-                <td>View / Edit / Delete</td>
+                <td>
+                    <div class="action-container">
+                        <div class="view-container">
+                            <img src="{% static 'images/icons/view.svg' %}" alt="view" />
+                        </div>
+                        <div class="edit-container">
+                            <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
+                        </div>
+                        <div class="delete-container">
+                            <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
+                        </div>
+                    </div>
+                </td>
             </tr>
         </table>
     </div>

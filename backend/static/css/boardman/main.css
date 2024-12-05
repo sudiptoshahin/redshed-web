@@ -434,6 +434,10 @@
     background-color: #f2f2f2;
 }
 
+.dash-types-table td {
+    padding: 15px 0;
+}
+
 .dash-types-table tr:hover {
     background-color: #ddd;
 }
@@ -445,4 +449,40 @@
     color: #313B5E;
     font-size: medium;
     font-family: "Lato", sans-serif;
+}
+
+.action-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.view-container, .edit-container, .delete-container {
+    width: auto;
+    padding: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.view-container {
+    background-color: #d0ffb1;
+}
+
+.edit-container {
+    background-color: #d0d0d0;
+}
+
+.delete-container {
+    background-color: #ff9d9d;
+}
+
+.dash-header-add-btn {
+    padding: 10px 20px;
+    background-color: #313B5E;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: small;
+    font-weight: 700;
 }
