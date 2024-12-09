@@ -38,47 +38,30 @@
 
         <table class="dash-types-table">
             <tr>
-                <th>Types</th>
-                <th>Status</th>
-                <th>Created at</th>
-                <th>Actions</th>
+                {% for header in headers %}
+                <th>{{header}}</th>
+                {% endfor %}
             </tr>
-            <tr>
-                <td>Formal</td>
-                <td>Active</td>
-                <td>12-11-24</td>
-                <td>
-                    <div class="action-container">
-                        <div class="view-container">
-                            <img src="{% static 'images/icons/view.svg' %}" alt="view" />
+            {% for type in data %}
+                <tr>
+                    <td>{{ type.title }}</td>
+                    <td>{{ type.status }}</td>
+                    <td>{{ type.created_at }}</td>
+                    <td>
+                        <div class="action-container">
+                            <div class="view-container">
+                                <img src="{% static 'images/icons/view.svg' %}" alt="view" />
+                            </div>
+                            <div class="edit-container">
+                                <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
+                            </div>
+                            <div class="delete-container">
+                                <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
+                            </div>
                         </div>
-                        <div class="edit-container">
-                            <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
-                        </div>
-                        <div class="delete-container">
-                            <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Casual</td>
-                <td>Deactive</td>
-                <td>12-11-24</td>
-                <td>
-                    <div class="action-container">
-                        <div class="view-container">
-                            <img src="{% static 'images/icons/view.svg' %}" alt="view" />
-                        </div>
-                        <div class="edit-container">
-                            <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
-                        </div>
-                        <div class="delete-container">
-                            <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 </div>
