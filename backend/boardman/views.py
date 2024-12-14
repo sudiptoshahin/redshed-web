@@ -17,3 +17,7 @@ def admin_inventory_type(request):
 
 def admin_inventory_category(request):
     return render(request, 'boardman/inventory/category.html')
+
+
+def admin_inventory_type_add(request):
+    return render(request, 'boardman/inventory/add_type.html')

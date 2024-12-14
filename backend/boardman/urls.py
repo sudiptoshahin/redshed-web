@@ -4,11 +4,22 @@ from boardman import views
 urlpatterns = [
     path('login/', views.admin_login, name='admin-login'),
     path('dashboard/', views.admin_dashboard, name='admin-dashboard-overview'),
+
+    # inventory-add
+    path(
+        'dashboard/inventory/type/add',
+        views.admin_inventory_type_add,
+        name='admin-inventory-type-add'
+    ),
+
+
+    # inventory-type
     path(
         'dashboard/inventory/type',
         views.admin_inventory_type,
         name='admin-inventory-type'
     ),
+    # inventory-category
     path(
         'dashboard/inventory/category',
         views.admin_inventory_category,
