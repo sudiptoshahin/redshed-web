@@ -1,12 +1,44 @@
-{% extends "boardman/layouts/menu-container.html" %}
+{% extends 'boardman/layouts/menu-container.html' %}
 {% load static %}
-
 {% block dashboard_header_title %}
-<h1>Add Type</h1>
+  <h1>Add Type</h1>
 {% endblock %}
 {% block dashboard_menu_content %}
+  <div style="background-color: lightblue;">
+    <form method="POST" action="">
+      {% csrf_token %}
 
+      <div class="input-section">
+        <label for="title" class="input-label">Title</label>
+        <input id="title" class="input-text" name="title" placeholder="eg. Shoe" value="{{ request.POST.title }}" />
+      </div>
 
+      <div class="">
+        <h1 class="input-label">Add image</h1>
+        <div class="upload-img">
+          <div class="input-uploaded-img">
+            <img class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+          </div>
+          <label class="input-img-upload">
+            <div class="input-img-icon">
+              <img src="{% static 'images/icons/upload.svg' %}" />
+            </div>
+            <input type="file" id="myFile" name="filename" hidden />
+          </label>
+        </div>
+      </div>
 
+      <div class="input-section">
+        <label class="input-label">Category</label>
+        <select class="input-select">
+            <option value="" disabled>Select Category</option>
+            <option>Cat A</option>
+            <option>Cat B</option>
+            <option>Cat C</option>
+        </select>
+      </div>
 
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 {% endblock %}
