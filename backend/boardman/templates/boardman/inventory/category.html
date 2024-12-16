@@ -1,5 +1,68 @@
-{% extends "boardman/dashboard_layout.html" %}
+{% extends "boardman/layouts/menu-container.html" %}
+{% load static %}
 
-{% block dashboard_section %}
-<h1>Category crud</h1>
+{% block dashboard_header_title %}
+<h1>Products Type</h1>
+{% endblock %}
+{% block dashboard_menu_content %}
+<div class="">
+    <div class="dashboard-types">
+        <div class="dashboard-type-item">
+            <div class="dashboard-type-container">
+                <img src="{% static 'images/admin/type-formal.jpg' %}" alt="casual" class="dashboard-type-img" />
+            </div>
+            <div class="dashboard-title-text">formal</div>
+        </div>
+        <div class="dashboard-type-item">
+            <div class="dashboard-type-container">
+                <img src="{% static 'images/admin/type-casual.jpg' %}" alt="casual" class="dashboard-type-img" />
+            </div>
+            <div class="dashboard-title-text">Casual</div>
+        </div>
+        <div class="dashboard-type-item">
+            <div class="dashboard-type-container">
+                <img src="{% static 'images/admin/type-sports.jpg' %}" alt="casual" class="dashboard-type-img" />
+            </div>
+            <div class="dashboard-title-text">sports</div>
+        </div>
+    </div>
+
+    <div class="dashboard-types-table">
+        <div class="dash-types-table-header">
+            <div class="dash-header-title">All Types List</div>
+            <div class="dash-header-add-filter">
+                <!-- Add type / Filter -->
+                <button class="dash-header-add-btn" onclick="onHandleAddCategory(event);">Add Category</button>
+            </div>
+        </div>
+
+        <table class="dash-types-table">
+            <tr>
+                {% for header in headers %}
+                <th>{{header}}</th>
+                {% endfor %}
+            </tr>
+            {% for type in data %}
+                <tr>
+                    <td>{{ type.title }}</td>
+                    <td>{{ type.status }}</td>
+                    <td>{{ type.created_at }}</td>
+                    <td>
+                        <div class="action-container">
+                            <div class="view-container">
+                                <img src="{% static 'images/icons/view.svg' %}" alt="view" />
+                            </div>
+                            <div class="edit-container">
+                                <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
+                            </div>
+                            <div class="delete-container">
+                                <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 {% endblock %}

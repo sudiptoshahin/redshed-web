@@ -18,3 +18,12 @@ window.onclick = function (event) {
 function onHandleInventroyDropdown() {
     document.getElementById("inventorySettingDropdown").classList.toggle('show');
 }
+
+function onHandleAddType(event) {
+    event.preventDefault();
+    window.location.replace('/admin/dashboard/inventory/type/add');
+}
+
+function onHandleAddCategory(event) {
+    window.location.replace('/admin/dashboard/inventory/category/add');
+}

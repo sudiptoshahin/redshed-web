@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from django.utils.timezone import now
 # from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import AbstractUser
 
@@ -8,9 +8,8 @@ class Category(models.Model):
     title = models.CharField(max_length=50)
     image = models.CharField(null=True, max_length=100)
     status = models.BooleanField(default=False, null=False)
-    # created_by = current user
-    created_at = models.DateTimeField(default=datetime.now())
-    updated_at = models.DateTimeField(default=datetime.now())
+    created_at = models.DateTimeField(default=now)
+    updated_at = models.DateTimeField(default=now)
 
 
 class Type(models.Model):
@@ -20,8 +19,8 @@ class Type(models.Model):
                                     related_query_name='category')
     # Author.objects.filter(category__title='Some category')
     status = models.BooleanField(default=False)
-    created_at = models.DateTimeField(default=datetime.now())
-    updated_at = models.DateTimeField(default=datetime.now())
+    created_at = models.DateTimeField(default=now)
+    updated_at = models.DateTimeField(default=now)
 
 
 class Product(models.Model):

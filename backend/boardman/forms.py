@@ -1,9 +1,15 @@
-from django.forms import ModelForm
-from .models import Type
 from django import forms
+from .models import Type, Category
+# from django import forms
 
 
-class TypeForm(ModelForm):
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['title', 'image', 'status']
+
+
+class TypeForm(forms.ModelForm):
     class Meta:
         model = Type
         fields = ['title', 'image', 'category_id', 'status']

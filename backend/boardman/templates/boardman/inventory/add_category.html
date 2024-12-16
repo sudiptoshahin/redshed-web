@@ -1,7 +1,7 @@
 {% extends 'boardman/layouts/menu-container.html' %}
 {% load static %}
 {% block dashboard_header_title %}
-  <h1>Add Type</h1>
+  <h1>Add Category</h1>
 {% endblock %}
 {% block dashboard_menu_content %}
   <div class="add-type-form">
@@ -29,27 +29,17 @@
       </div>
 
       <div class="input-section">
-        <label class="input-label">Category</label>
-        <select class="input-select" value="{{ request.POST.status }}">
-            <option value="" disabled>Select Category</option>
-            <option>Cat A</option>
-            <option>Cat B</option>
-            <option>Cat C</option>
-        </select>
-      </div>
-
-      <div class="input-section">
         <label for="" class="input-label">Status</label>
         <div class="input-radio-container">
             <div class="input-radio-content">
                 <input type="radio" id="active" name="status" 
                 value="active" class="input-radio" />
-                <label for="active">Active</label>
+                <label for="active" class="lato-regular">Active</label>
             </div>
             <div class="input-radio-content">
                 <input type="radio" id="deactive" name="status" 
                 value="deactive" class="input-radio" />
-                <label for="deactive">Deactive</label>
+                <label for="deactive" class="lato-regular">Deactive</label>
             </div>
         </div>
       </div>
