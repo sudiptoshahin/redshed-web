@@ -6,7 +6,8 @@ from django.contrib.auth.models import AbstractUser
 
 class Category(models.Model):
     title = models.CharField(max_length=50)
-    image = models.CharField(null=True, max_length=100)
+    # image = models.CharField(null=True, max_length=100)
+    image = models.ImageField(null=True, blank=True, upload_to='uploaded_img/')
     status = models.BooleanField(default=False, null=False)
     created_at = models.DateTimeField(default=now)
     updated_at = models.DateTimeField(default=now)

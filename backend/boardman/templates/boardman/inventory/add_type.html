@@ -5,7 +5,9 @@
 {% endblock %}
 {% block dashboard_menu_content %}
   <div class="add-type-form">
-    <form method="POST" action="">
+
+    <p>{{ categories }}</p>
+    <form method="POST" action="" enctype="multipart/form-data">
       {% csrf_token %}
 
       <div class="input-section">
