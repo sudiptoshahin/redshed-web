@@ -42,11 +42,11 @@
                 <th>{{header}}</th>
                 {% endfor %}
             </tr>
-            {% for type in data %}
+            {% for category in data %}
                 <tr>
-                    <td>{{ type.title }}</td>
-                    <td>{{ type.status }}</td>
-                    <td>{{ type.created_at }}</td>
+                    <td>{{ category.title }}</td>
+                    <td>{{ category.status }}</td>
+                    <td>{{ category.created_at }}</td>
                     <td>
                         <div class="action-container">
                             <div class="view-container">

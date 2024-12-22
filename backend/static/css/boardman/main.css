@@ -606,3 +606,9 @@
     align-items: center;
     justify-content: center;
 }
+
+.type-form-section {
+    display: flex;
+    align-items: start;
+    column-gap: 50px;
+}

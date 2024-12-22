@@ -1,5 +1,5 @@
 from django import forms
-from .models import Type, Category
+from .models import ProductType, Category
 # from django import forms
 
 
@@ -11,15 +11,15 @@ class CategoryForm(forms.ModelForm):
 
 class TypeForm(forms.ModelForm):
     class Meta:
-        model = Type
+        model = ProductType
         fields = ['title', 'image', 'category_id', 'status']
 
-    labels = {
-        'title': 'Title',
-        'image': 'Image',
-        'category': 'Select category (*)',
-        'status': 'Status'
-    }
+    # labels = {
+    #     'title': 'Title',
+    #     'image': 'Image',
+    #     'category': 'Select category (*)',
+    #     'status': 'Status'
+    # }
     
     # widgets = {
     #     'title': forms.TextInput(

@@ -7,62 +7,7 @@ import os
 from PIL import Image
 import io
 from django.http import HttpResponseRedirect
-from boardman.models import Category, Type
-
-
-category_context_dict = {
-    "table_headers": ['Categories', 'Status', 'Created At', 'Actions'],
-    "data": [
-        {
-            "id": "#001",
-            "title": "Shirts",
-            "status": True,
-            "created_at": "12-11-2024"
-        },
-        {
-            "id": "#002",
-            "title": "Belts",
-            "status": False,
-            "created_at": "12-11-2024"
-        },
-        {
-            "id": "#003",
-            "title": "Shoe",
-            "status": False,
-            "created_at": "13-11-2024"
-        },
-        {
-            "id": "#004",
-            "title": "Shader",
-            "status": False,
-            "created_at": "13-11-2024"
-        }
-    ]
-}
-
-type_context_dict = {
-        "table_headers": ['Types', 'Status', 'Created At', 'Actions'],
-        "data": [
-            {
-                "id": "#001",
-                "title": "Formal", 
-                "status": True,
-                "created_at": "12-11-2024"
-            },
-            {
-                "id": "#002",
-                "title": "Casual", 
-                "status": False,
-                "created_at": "12-11-2024"
-            },
-            {
-                "id": "#003",
-                "title": "Sports", 
-                "status": False,
-                "created_at": "13-11-2024"
-            }
-        ]
-    }
+from boardman.models import Category, ProductType
 
 
 def admin_login(request):
@@ -75,6 +20,15 @@ def admin_dashboard(request):
 
 def admin_inventory_type(request):
 
+    productTypes = ProductType.objects.all()
+    type_context_dict = {
+        "table_headers": ['Types', 'Status', 'Created At', 'Actions'],
+        "data": productTypes
+    }
+
+    print(type_context_dict)
+
+
     # data that needs to pass in context dictionary
     return render(request, 'boardman/inventory/type.html', {
         'data': type_context_dict["data"],
@@ -83,6 +37,16 @@ def admin_inventory_type(request):
 
 
 def admin_inventory_category(request):
+
+    categories = Category.objects.all()
+
+    print(categories)
+
+    category_context_dict = {
+        "table_headers": ['Categories', 'Status', 'Created At', 'Actions'],
+        "data": categories
+    }
+
     # return render(request, 'boardman/inventory/category.html')
     return render(request, 'boardman/inventory/category.html', {
         'headers': category_context_dict['table_headers'],
@@ -91,19 +55,57 @@ def admin_inventory_category(request):
 
 
 def admin_inventory_type_add(request):
-    
     categories = []
     raw_categories = Category.objects.all()
     for category in raw_categories:
         categories.append({'id': category.id, 'title': category.title})
-    typeForm = TypeForm()
-    if request.method == "POST":
-        print('title:', request.POST.get('title'))
 
+    if request.method == "POST":
+        print({
+            "post": request.POST,
+            "files": request.FILES
+        })
+        type_form = TypeForm(request.POST, request.FILES)
+        # print(type_form.cleaned_data)
+        if type_form.is_valid():
+            type_form.save()
+            return HttpResponseRedirect('/admin/dashboard/inventory/type')
+        else:
+            print(f"errors==> {type_form.errors}")
+    else:
+        type_form = TypeForm()
     return render(request, 'boardman/inventory/add_type.html', {
-        "form": typeForm,
+        "form": type_form,
         'categories': categories
     })
+
+# def admin_inventory_type_add(request):
+#     categories = []
+#     raw_categories = Category.objects.all()
+#     for category in raw_categories:
+#         categories.append({'id': category.id, 'title': category.title})
+
+#     typeForm = TypeForm()
+#     if request.method == "POST":
+#         type_obj = {
+#             "title": request.POST.get("title"),
+#             "image": request.FILES.get('image'),
+#             "category_id:": request.POST.get("category"),
+#             "status": request.POST.get("status")
+#         }
+#         type_form_obj = TypeForm(type_obj)
+        
+#         if type_form_obj.is_valid():
+#             print(type_form_obj)
+#             # type_form_obj.save()
+#             return HttpResponseRedirect('/admin/dashboard/inventory/type')
+#         # else:
+#         #     print(f'____________{typeForm.errors}___________')
+
+#     return render(request, 'boardman/inventory/add_type.html', {
+#         "form": typeForm,
+#         'categories': categories
+#     })
 
 
 def validate_data(data):
@@ -172,9 +174,9 @@ def admin_inventory_category_add(request):
             # )
             categoryForm = CategoryForm(request.POST)
             if categoryForm.is_valid():
-                category = categoryForm.save(commit=False)
-                # category.save()
-                return HttpResponseRedirect('admin/dashboard/inventory/category')
+                # category = categoryForm.save(commit=False)
+                categoryForm.save()
+                return HttpResponseRedirect('/admin/dashboard/inventory/category')
 
     return render(request, 'boardman/inventory/add_category.html', {
         'form': categoryForm,

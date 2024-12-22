@@ -13,7 +13,7 @@ class Category(models.Model):
     updated_at = models.DateTimeField(default=now)
 
 
-class Type(models.Model):
+class ProductType(models.Model):
     title = models.CharField(max_length=50)
     image = models.CharField(null=True, max_length=100)
     category_id = models.ForeignKey(Category, on_delete=models.CASCADE,
@@ -28,7 +28,7 @@ class Product(models.Model):
     title = models.CharField(max_length=100)
     slug = models.CharField(max_length=200)
     category = models.ForeignKey('Category', on_delete=models.PROTECT)
-    type = models.ForeignKey('Type', on_delete=models.PROTECT)
+    type = models.ForeignKey('ProductType', on_delete=models.PROTECT)
     status = models.BooleanField()
     main_images = models.CharField(max_length=100, blank=True, null=True)
     # sub_images = ArrayField(
