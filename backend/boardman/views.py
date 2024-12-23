@@ -60,7 +60,8 @@ def admin_inventory_type_add(request):
         categories.append({'id': category.id, 'title': category.title})
 
     type_form = TypeForm()
-    if request.method == "POST":
+    if request.method == "POST" and request.FILES.get('image'):
+        print(f"_______image_________\n{request.FILES['image']}")
         type_form = TypeForm(request.POST, request.FILES)
         if type_form.is_valid():
             title = type_form.cleaned_data["title"]
@@ -76,12 +77,13 @@ def admin_inventory_type_add(request):
                 status
             })
 
-            type_form.save(commit=True)
-            return HttpResponseRedirect('/admin/dashboard/inventory/type')
+            # type_form.save(commit=True)
+            # return HttpResponseRedirect('/admin/dashboard/inventory/type')
         else:
             print(f"___{type_form.errors}___")
 
     return render(request, 'boardman/inventory/add_type.html', {
+        "uploaded_img_url": request.FILES.get('image') or None,
         "form": TypeForm,
         'categories': categories
     })

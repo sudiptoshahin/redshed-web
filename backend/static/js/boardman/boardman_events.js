@@ -27,3 +27,20 @@ function onHandleAddType(event) {
 function onHandleAddCategory(event) {
     window.location.replace('/admin/dashboard/inventory/category/add');
 }
+
+function onChangeTypeAddImage(event) {
+    const typeImage = document.getElementById('add_image_show');
+    const imagePreviewContainer = document.getElementById('type_add_image_container');
+
+    const uploaded_file = event.target.files[0];
+    // imagePreviewContainer.textContent = uploaded_file.name;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        console.log('___FILE_READER_EVENT___', e);
+        imagePreviewContainer.src = e.target.result;
+        imagePreviewContainer.style.display = 'block';
+    }
+    reader.readAsDataURL(uploaded_file);
+
+    console.log('typeImage', uploaded_file);
+}
