@@ -12,7 +12,7 @@
         <div>
           <div class="input-section">
             <label for="title" class="input-label">Title</label>
-            <input id="title" class="input-text" name="title" placeholder="eg. Shoe" value="{{ request.POST.title }}" />
+            {{form.title}}
           </div>
 
           <div class="input-section">
@@ -54,7 +54,7 @@
                 <div class="input-img-icon">
                   <img src="{% static 'images/icons/upload.svg' %}" />
                 </div>
-                <input type="file" id="myFile" name="filename" hidden />
+                <input type="file" id="image" name="image" hidden />
               </label>
             </div>
           </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 # from django.contrib.auth import urls
 # from django.contrib.auth import authenticate, login, logout
-from boardman.forms import TypeForm, CategoryForm
+from boardman.forms import CategoryForm, TypeForm
 from django.conf import settings
 import os
 from PIL import Image
@@ -27,7 +27,6 @@ def admin_inventory_type(request):
     }
 
     print(type_context_dict)
-
 
     # data that needs to pass in context dictionary
     return render(request, 'boardman/inventory/type.html', {
@@ -60,52 +59,23 @@ def admin_inventory_type_add(request):
     for category in raw_categories:
         categories.append({'id': category.id, 'title': category.title})
 
+    type_form = TypeForm()
     if request.method == "POST":
-        print({
-            "post": request.POST,
-            "files": request.FILES
-        })
         type_form = TypeForm(request.POST, request.FILES)
-        # print(type_form.cleaned_data)
         if type_form.is_valid():
-            type_form.save()
-            return HttpResponseRedirect('/admin/dashboard/inventory/type')
+            title = type_form.cleaned_data["title"]
+            image = type_form.cleaned_data["image"]
+            category_id = type_form.cleaned_data['category_id']
+            status = type_form.cleaned_data['status']
+
+            print(title, image, category_id, status)
         else:
-            print(f"errors==> {type_form.errors}")
-    else:
-        type_form = TypeForm()
+            print(f"___{type_form.errors}___")
+
     return render(request, 'boardman/inventory/add_type.html', {
-        "form": type_form,
+        "form": TypeForm,
         'categories': categories
     })
-
-# def admin_inventory_type_add(request):
-#     categories = []
-#     raw_categories = Category.objects.all()
-#     for category in raw_categories:
-#         categories.append({'id': category.id, 'title': category.title})
-
-#     typeForm = TypeForm()
-#     if request.method == "POST":
-#         type_obj = {
-#             "title": request.POST.get("title"),
-#             "image": request.FILES.get('image'),
-#             "category_id:": request.POST.get("category"),
-#             "status": request.POST.get("status")
-#         }
-#         type_form_obj = TypeForm(type_obj)
-        
-#         if type_form_obj.is_valid():
-#             print(type_form_obj)
-#             # type_form_obj.save()
-#             return HttpResponseRedirect('/admin/dashboard/inventory/type')
-#         # else:
-#         #     print(f'____________{typeForm.errors}___________')
-
-#     return render(request, 'boardman/inventory/add_type.html', {
-#         "form": typeForm,
-#         'categories': categories
-#     })
 
 
 def validate_data(data):

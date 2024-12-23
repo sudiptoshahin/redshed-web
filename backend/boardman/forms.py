@@ -3,29 +3,23 @@ from .models import ProductType, Category
 # from django import forms
 
 
+TYPE_CATEGORY_CHOICES = []
+
+
 class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ['title', 'image', 'status']
 
 
-class TypeForm(forms.ModelForm):
-    class Meta:
-        model = ProductType
-        fields = ['title', 'image', 'category_id', 'status']
+class TypeForm(forms.Form):
+    title = forms.CharField(max_length=100)
+    image = forms.ImageField()
+    category_id = forms.IntegerField()
+    status = forms.BooleanField()
 
-    # labels = {
-    #     'title': 'Title',
-    #     'image': 'Image',
-    #     'category': 'Select category (*)',
-    #     'status': 'Status'
-    # }
-    
-    # widgets = {
-    #     'title': forms.TextInput(
-    #         attrs={
-    #             'class': 'input-label',
-    #             'placeholder': 'Enter the title'
-    #         }
-    #     )
-    # }
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['category_id'].choices = [
+    #         (cat.id, cat.title) for cat in Category.objects.all()
+    #     ]
