@@ -65,10 +65,19 @@ def admin_inventory_type_add(request):
         if type_form.is_valid():
             title = type_form.cleaned_data["title"]
             image = type_form.cleaned_data["image"]
+            # image = request.FILES['image']
             category_id = type_form.cleaned_data['category_id']
             status = type_form.cleaned_data['status']
 
-            print(title, image, category_id, status)
+            print({
+                title,
+                image,
+                category_id,
+                status
+            })
+
+            type_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard/inventory/type')
         else:
             print(f"___{type_form.errors}___")
 

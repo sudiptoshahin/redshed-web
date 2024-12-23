@@ -15,9 +15,10 @@ class Category(models.Model):
 
 class ProductType(models.Model):
     title = models.CharField(max_length=50)
-    image = models.CharField(null=True, max_length=100)
-    category_id = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                    related_query_name='category')
+    image = models.ImageField(null=True, blank=True, upload_to='uploaded_img/')
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_query_name='category'
+    )
     # Author.objects.filter(category__title='Some category')
     status = models.BooleanField(default=False)
     created_at = models.DateTimeField(default=now)
