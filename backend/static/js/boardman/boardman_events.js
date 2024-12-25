@@ -105,3 +105,13 @@ function handleCroppedBtn(event) {
     // cropperInstance = null;
 
 }
+
+function onHandleAddTypeCancel(event) {
+    event.preventDefault();
+    window.location.replace('/admin/dashboard/inventory/type');
+}
+
+function onHandleCategoryAddCancel(event) {
+    event.preventDefault();
+    window.location.replace('/admin/dashboard/inventory/category');
+}
