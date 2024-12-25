@@ -13,18 +13,27 @@
         <input id="title" class="input-text" name="title" placeholder="eg. Shoe" value="{{ request.POST.title }}" />
       </div>
 
-      <div class="input-section">
-        <h1 class="input-label">Add image</h1>
-        <div class="upload-img">
-          <div class="input-uploaded-img">
-            <img class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
-          </div>
-          <label class="input-img-upload">
-            <div class="input-img-icon">
-              <img src="{% static 'images/icons/upload.svg' %}" />
+      <div>
+        <div class="input-section">
+          <h1 class="input-label">Add image</h1>
+          <div class="upload-img">
+            <div class="input-uploaded-img">
+              <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+              <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
             </div>
-            <input type="file" id="image" name="image" hidden />
-          </label>
+            <label class="input-img-upload">
+              <div class="input-img-icon">
+                <img src="{% static 'images/icons/upload.svg' %}" />
+              </div>
+              <input type="file" 
+                id="type_upload_img" 
+                name="image" 
+                hidden
+                onchange="onChangeImageInput(event)"
+               />
+            </label>
+          </div>
+          <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
         </div>
       </div>
 

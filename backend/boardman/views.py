@@ -60,30 +60,28 @@ def admin_inventory_type_add(request):
         categories.append({'id': category.id, 'title': category.title})
 
     type_form = TypeForm()
-    if request.method == "POST" and request.FILES.get('image'):
-        print(f"_______image_________\n{request.FILES['image']}")
+    if request.method == "POST":
         type_form = TypeForm(request.POST, request.FILES)
         if type_form.is_valid():
-            title = type_form.cleaned_data["title"]
-            image = type_form.cleaned_data["image"]
+            # title = type_form.cleaned_data["title"]
+            # image = type_form.cleaned_data["image"]
             # image = request.FILES['image']
-            category_id = type_form.cleaned_data['category_id']
-            status = type_form.cleaned_data['status']
+            # category_id = type_form.cleaned_data['category_id']
+            # status = type_form.cleaned_data['status']
 
-            print({
-                title,
-                image,
-                category_id,
-                status
-            })
+            # print({
+            #     title,
+            #     image,
+            #     category_id,
+            #     status
+            # })
 
-            # type_form.save(commit=True)
-            # return HttpResponseRedirect('/admin/dashboard/inventory/type')
+            type_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard/inventory/type')
         else:
             print(f"___{type_form.errors}___")
 
     return render(request, 'boardman/inventory/add_type.html', {
-        "uploaded_img_url": request.FILES.get('image') or None,
         "form": TypeForm,
         'categories': categories
     })
@@ -103,28 +101,6 @@ def admin_inventory_category_add(request):
     categoryForm = CategoryForm()
 
     uploaded_img_url = None
-    # if request.method == "POST" and request.FILES.get('image'):
-    #     uploaded_file = request.FILES.get('image')
-
-    #     uploaded_path = os.path.join(settings.MEDIA_ROOT, uploaded_file.name)
-    #     with open(uploaded_file, 'wb') as file:
-    #         for chunk in uploaded_file.chunks():
-    #             file.write(chunk)
-    #     # Process the image (resize or change aspect ratio if needed)
-    #     image_file = Image.open(uploaded_path)
-    #     desired_size = (233, 270)
-    #     image_file = image_file.resize(desired_size)
-        
-    #     processed_img_name = f"processed_{uploaded_file.name}"
-    #     processed_image_path = os.path.join(
-    #         settings.MEDIA_ROOT,
-    #         processed_img_name
-    #     )
-    #     image_file.save(processed_image_path)
-    #     uploaded_img_url = os.path.join(
-    #         settings.MEDIA_URL, processed_img_name
-    #     )
-
     if request.method == "POST":
         category_dict = {
             'title': request.POST.get('title'),
@@ -133,33 +109,11 @@ def admin_inventory_category_add(request):
         }
 
         if validate_data(category_dict):
-            # if category_dict['status'] == 'deactive':
-            #     category_dict["status"] = False
-            # if category_dict['status'] == 'active':
-            #     category_dict["status"] = True
-            
-            # uploaded_file = category_dict['image']
-            # image = Image.open(uploaded_file)
-
-            # desired_size = (233, 270)
-            # image = image.resize(desired_size)
-
-            # processed_img_io = io.BytesIO()
-            # image.save(processed_img_io, format=image.format)
-            # processed_img_io.seek(0)
-
-            # categoryForm = CategoryForm(
-            #     title=category_dict["title"],
-            #     image=category_dict["image"],
-            #     status=category_dict["status"],
-            # )
             categoryForm = CategoryForm(request.POST)
             if categoryForm.is_valid():
-                # category = categoryForm.save(commit=False)
                 categoryForm.save()
                 return HttpResponseRedirect('/admin/dashboard/inventory/category')
 
     return render(request, 'boardman/inventory/add_category.html', {
         'form': categoryForm,
-        # 'uploaded_img_url': uploaded_img_url
     })

@@ -49,8 +49,8 @@
             <h1 class="input-label">Add image</h1>
             <div class="upload-img">
               <div class="input-uploaded-img">
-                {% comment %} <p id="type_add_image_container">{{uploaded_img_url}}</p> {% endcomment %}
                 <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
               </div>
               <label class="input-img-upload">
                 <div class="input-img-icon">
@@ -60,10 +60,11 @@
                   id="type_upload_img" 
                   name="image" 
                   hidden
-                  onchange="onChangeTypeAddImage(event)"
+                  onchange="onChangeImageInput(event)"
                  />
               </label>
             </div>
+            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
           </div>
         </div>
       </div>
