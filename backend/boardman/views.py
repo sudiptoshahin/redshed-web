@@ -10,6 +10,9 @@ from django.http import HttpResponseRedirect
 from boardman.models import Category, ProductType
 
 
+MEDIA_PATH = settings.MEDIA_ROOT
+
+
 def admin_login(request):
     return render(request, 'boardman/login.html')
 
@@ -32,6 +35,17 @@ def admin_inventory_type(request):
     return render(request, 'boardman/inventory/type.html', {
         'data': type_context_dict["data"],
         'headers': type_context_dict["table_headers"]
+    })
+
+
+def admin_inventory_category_details(request, categoryId):
+    category = Category.objects.get(id=categoryId)
+
+    print('Category:', category.image)
+
+    return render(request, 'boardman/inventory/category_details.html', {
+        'category': category,
+        'MEDIA_PATH': MEDIA_PATH
     })
 
 
@@ -63,19 +77,6 @@ def admin_inventory_type_add(request):
     if request.method == "POST":
         type_form = TypeForm(request.POST, request.FILES)
         if type_form.is_valid():
-            # title = type_form.cleaned_data["title"]
-            # image = type_form.cleaned_data["image"]
-            # image = request.FILES['image']
-            # category_id = type_form.cleaned_data['category_id']
-            # status = type_form.cleaned_data['status']
-
-            # print({
-            #     title,
-            #     image,
-            #     category_id,
-            #     status
-            # })
-
             type_form.save(commit=True)
             return HttpResponseRedirect('/admin/dashboard/inventory/type')
         else:
@@ -98,22 +99,21 @@ def validate_data(data):
 
 def admin_inventory_category_add(request):
 
-    categoryForm = CategoryForm()
-
-    uploaded_img_url = None
+    category_form = CategoryForm()
+    # uploaded_img_url = None
     if request.method == "POST":
-        category_dict = {
-            'title': request.POST.get('title'),
-            'image': request.FILES.get('image'),
-            'status': request.POST.get('status')
-        }
-
-        if validate_data(category_dict):
-            categoryForm = CategoryForm(request.POST)
-            if categoryForm.is_valid():
-                categoryForm.save()
-                return HttpResponseRedirect('/admin/dashboard/inventory/category')
+        category_form = CategoryForm(request.POST, request.FILES)
+        if category_form.is_valid():
+            category_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard/inventory/category')
+        else:
+            print(f"___{category_form.errors}___")  
 
     return render(request, 'boardman/inventory/add_category.html', {
-        'form': categoryForm,
+        'form': category_form,
     })
+
+
+def admin_inventory_products(request):
+
+    return render(request, 'boardman/inventory/products.html')

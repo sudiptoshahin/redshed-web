@@ -1,0 +1,91 @@
+{% extends 'boardman/layouts/menu-container.html' %}
+{% load static %}
+
+{% block dashboard_header_title %}
+  <h1>Products Cateogry</h1>
+{% endblock %}
+{% block dashboard_menu_content %}
+  <div class="">
+    <div class="dashboard-types">
+      <div class="dashboard-type-item">
+        <div class="dashboard-type-container">
+          <img src="{% static 'images/admin/type-formal.jpg' %}" alt="casual" class="dashboard-type-img" />
+        </div>
+        <div class="dashboard-title-text">formal</div>
+      </div>
+      <div class="dashboard-type-item">
+        <div class="dashboard-type-container">
+          <img src="{% static 'images/admin/type-casual.jpg' %}" alt="casual" class="dashboard-type-img" />
+        </div>
+        <div class="dashboard-title-text">Casual</div>
+      </div>
+      <div class="dashboard-type-item">
+        <div class="dashboard-type-container">
+          <img src="{% static 'images/admin/type-sports.jpg' %}" alt="casual" class="dashboard-type-img" />
+        </div>
+        <div class="dashboard-title-text">sports</div>
+      </div>
+    </div>
+
+    <div class="dashboard-types-table">
+      <div class="dash-types-table-header">
+        <div class="dash-header-title">Category Details</div>
+        <div class="dash-header-add-filter">
+          <!-- Add type / Filter -->
+          <button class="dash-header-add-btn" onclick="onHandleAddCategory(event);">Add Category</button>
+        </div>
+      </div>
+
+      <div class="add-type-form">
+        <form method="POST" action="" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <div class="input-section">
+            <label for="title" class="input-label">Title</label>
+            <input id="title" class="input-text" name="title" placeholder="eg. Shoe" value="{{ category.title }}" />
+          </div>
+
+          <p>{{MEDIA_PATH}}</p>
+          <p>{{category.image}}</p>
+          <div>
+            <div class="input-section">
+              <h1 class="input-label">Add image</h1>
+              <div class="upload-img">
+                <div class="input-uploaded-img">
+                  <img id="type_add_image_container" class="uploaded-img" src="{{category.image}}" alt="image" />
+                  <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
+                </div>
+                <label class="input-img-upload">
+                  <div class="input-img-icon">
+                    <img src="{% static 'images/icons/upload.svg' %}" />
+                  </div>
+                  <input type="file" id="type_upload_img" name="image" hidden onchange="onChangeImageInput(event)" />
+                </label>
+              </div>
+              <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+            </div>
+          </div>
+
+          <div class="input-section">
+            <label for="" class="input-label">Status</label>
+            <div class="input-radio-container">
+              <div class="input-radio-content">
+                <input type="radio" id="active" name="status" value="active" class="input-radio" />
+                <label for="active" class="lato-regular">Active</label>
+              </div>
+              <div class="input-radio-content">
+                <input type="radio" id="deactive" name="status" value="deactive" class="input-radio" />
+                <label for="deactive" class="lato-regular">Deactive</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <button class="btn-cancel" type="button" onclick="onHandleCategoryAddCancel(event)">Cancel</button>
+            <button class="btn-submit" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

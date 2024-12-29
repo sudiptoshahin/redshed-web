@@ -2,6 +2,7 @@
 /** all variables */
 let cropperInstance = null;
 let typeCroppedImage = null;
+let categoryCroppedImage = null;
 let imagePreviewContainer = null;
 
 
@@ -37,7 +38,7 @@ function imageCropper(el) {
         aspectRatio: 16 / 9,
         viewMode: 1,
         autoCropArea: 1,
-        crop: function(e) {
+        crop: function (e) {
             console.log('WIDTH', e.detail.width);
             console.log('HEIGHT', e.detail.height);
         },
@@ -51,30 +52,43 @@ function onChangeImageInput(event) {
     imagePreviewContainer = document.getElementById('type_add_image_container');
 
     const uploaded_file = event.target.files[0];
-    
+
     const reader = new FileReader();
-    reader.onload = function(e) {
-        
+    reader.onload = function (e) {
+
         if (cropperInstance) {
             cropperInstance.destroy();
             cropperInstance = null;
         }
-        
+
         // imagePreviewContainer.src = e.target.result;
         imagePreviewContainer.src = e.target.result;
         imagePreviewContainer.style.display = 'block';
-        imagePreviewContainer.onload = function() {
+        imagePreviewContainer.onload = function () {
             cropperInstance = imageCropper(imagePreviewContainer);
             imagePreviewContainer.style.display = 'block';
         }
     }
     reader.readAsDataURL(uploaded_file);
+}
+
+function getFileName(name) {
+    let tempFileName = String(name);
+    if (tempFileName === "" || tempFileName === null) {
+        tempFileName = String(Date.now());
+    };
     
-    console.log('typeImage', uploaded_file);
+    tempFileName = tempFileName.toLowerCase().split(" ").join("_");
+    tempFileName = `${tempFileName}_${Date.now()}`;
+    return tempFileName;
 }
 
 function handleCroppedBtn(event) {
     const imageInput = document.getElementById('type_upload_img');
+    const catImageInput = document.getElementById('cat_upload_img');
+    
+    const file_name = `${Date.now()}`;
+
     const croppedImgContainer = document.getElementById('cropped_img');
     event.preventDefault();
     if (!cropperInstance) {
@@ -84,25 +98,23 @@ function handleCroppedBtn(event) {
 
     const croppedCanvas = cropperInstance.getCroppedCanvas();
     const tempCroppedImage = croppedCanvas.toDataURL('image/png');
-    let croppedImageData = null;
     croppedCanvas.toBlob((blob) => {
-        croppedImageData = blob;
-    }, 'image/png');
-    typeCroppedImage = tempCroppedImage
+        if (blob) {
+            const file = new File([blob], `${file_name}.jpg`, {
+                type: blob.type,
+            });
+            // croppedImageData = file;
+            console.log('cropped_img', file);
+            if (imageInput === null) {
+                catImageInput.value = file;
+            } if (catImageInput === null) {
+                imageInput.value = file;
+            }
+        }
+    }, 'image/jpg');
 
-    croppedImgContainer.src = typeCroppedImage;
-    // imagePreviewContainer.src = typeCroppedImage;
-    console.log("__type__", typeof(croppedImageData));
-
-
-    imageInput.value = croppedImageData;
+    croppedImgContainer.src = tempCroppedImage;
     croppedImgContainer.style.display = 'block';
-
-
-    // const imageInput = document.getElementById('type_add_image');
-    // imageInput.value = croppedImage;
-    // cropperInstance.destroy();
-    // cropperInstance = null;
 
 }
 
@@ -115,3 +127,9 @@ function onHandleCategoryAddCancel(event) {
     event.preventDefault();
     window.location.replace('/admin/dashboard/inventory/category');
 }
+
+function onaHandleCategoryView(event, categoryId) {
+    event.preventDefault();
+    // console.log('categoryId', categoryId)
+    window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/details`);
+}   

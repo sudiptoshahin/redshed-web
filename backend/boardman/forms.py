@@ -6,10 +6,21 @@ from .models import ProductType, Category
 TYPE_CATEGORY_CHOICES = []
 
 
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ['title', 'image', 'status']
+class CategoryForm(forms.Form):
+    title = forms.CharField(max_length=100)
+    image = forms.ImageField()
+    status = forms.BooleanField()
+
+    def save(self, commit=False):
+        category_instance = Category(
+            title=self.cleaned_data['title'],
+            image=self.cleaned_data['image'],
+            status=self.cleaned_data['status']
+        )
+        print('category_instance', category_instance)
+        if commit:
+            category_instance.save()
+        return category_instance
 
 
 class TypeForm(forms.Form):
