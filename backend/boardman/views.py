@@ -40,11 +40,10 @@ def admin_inventory_type(request):
 
 
 def admin_inventory_category_delete(request, category_id):
-    if request.method == "DELETE":
-        print('____category_id_____', category_id)
-        category = Category.objects.get(id=category_id)
-        # category.delete()
-        return redirect('admin-inventory-category')
+    print('____category_id_____', category_id)
+    category = Category.objects.get(id=category_id)
+    category.delete()
+    return redirect('admin-inventory-category')
 
 
 def admin_inventory_category_edit(request, category_id):

@@ -56,11 +56,12 @@
                             <div class="edit-container">
                                 <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
                             </div>
-                            {% comment %} onclick="onHadleDeleteCategory(event, '{{ category.id }}')" {% endcomment %}
-                            <div class="delete-container">
-                                <a href="{% url 'admin-inventory-category-delete' category.id %}">
+                            <div class="delete-container"
+                            onclick="onHadleDeleteCategory(event, '{{ category.id }}')">
+                                {% comment %} <a href="{% url 'admin-inventory-category-delete' category.id %}">
                                     <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
-                                </a>
+                                </a> {% endcomment %}
+                                <img src="{% static 'images/icons/delete.svg' %}" alt="delete" />
                             </div>
                         </div>
                     </td>
