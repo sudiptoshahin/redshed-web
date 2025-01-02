@@ -53,7 +53,8 @@
                             onclick="onaHandleCategoryView(event, '{{ category.id }}')">
                                 <img src="{% static 'images/icons/view.svg' %}" alt="view" />
                             </div>
-                            <div class="edit-container">
+                            <div class="edit-container"
+                            onclick="onHandleEditCategory(event, '{{ category.id }}')"> 
                                 <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
                             </div>
                             <div class="delete-container"

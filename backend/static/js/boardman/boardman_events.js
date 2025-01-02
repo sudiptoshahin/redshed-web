@@ -123,7 +123,7 @@ function onHandleAddTypeCancel(event) {
     window.location.replace('/admin/dashboard/inventory/type');
 }
 
-function onHandleCategoryAddCancel(event) {
+function onHandleCategoryList(event) {
     event.preventDefault();
     window.location.replace('/admin/dashboard/inventory/category');
 }
@@ -135,10 +135,6 @@ function onaHandleCategoryView(event, categoryId) {
 }
 
 function onHandleEditCategory(event, categoryId) {
-    
-    // console.log("__________________")
-    // console.log("___", categoryId, "___________");
-    // console.log("=========================")
     window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/edit`);
 }
 

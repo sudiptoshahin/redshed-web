@@ -32,12 +32,12 @@
         <div class="dash-header-title">Category Edit</div>
         <div class="dash-header-add-filter">
           <!-- Add type / Filter -->
-          <button class="dash-header-add-btn" onclick="onHandleAddCategory(event);">Add Category</button>
+          <button class="dash-header-add-btn" onclick="onHandleCategoryList(event);">List</button>
         </div>
       </div>
 
       <div class="add-type-form">
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="PATCH" action="" enctype="multipart/form-data">
           {% csrf_token %}
 
           <div class="input-section">
@@ -68,19 +68,25 @@
             <label for="" class="input-label">Status</label>
             <div class="input-radio-container">
               <div class="input-radio-content">
-                <input type="radio" id="active" name="status" value="active" class="input-radio" />
+                <input type="radio" id="active" 
+                name="status" value="active" 
+                class="input-radio"
+                checked="{{ category.status }}" />
                 <label for="active" class="lato-regular">Active</label>
               </div>
               <div class="input-radio-content">
-                <input type="radio" id="deactive" name="status" value="deactive" class="input-radio" />
+                <input type="radio" id="deactive" 
+                name="status" value="deactive" 
+                class="input-radio"
+                checked="{{ category.status }}" />
                 <label for="deactive" class="lato-regular">Deactive</label>
               </div>
             </div>
           </div>
 
           <div class="buttons">
-            <button class="btn-cancel" type="button" onclick="onHandleCategoryAddCancel(event)">Cancel</button>
-            <button class="btn-submit" type="submit">Submit</button>
+            <button class="btn-cancel" type="button" onclick="onHandleCategoryList(event)">Cancel</button>
+            <button class="btn-submit" type="submit">Update</button>
           </div>
         </form>
       </div>

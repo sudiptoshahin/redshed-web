@@ -63,6 +63,15 @@ def admin_inventory_category_edit(request, category_id):
         'category': category_instance
     }
 
+    if request.method == "PATCH":
+        # print('___PATCH____', request.POST)
+        category_form = CategoryForm(request.PATCH, request.FILES)
+        if category_form.is_valid():
+            category_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard/inventory/category')
+        else:
+            print(f"___{category_form.errors}___")
+
     return render(
         request,
         'boardman/inventory/category_edit.html',
