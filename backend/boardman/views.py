@@ -1,13 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # from django.contrib.auth import urls
 # from django.contrib.auth import authenticate, login, logout
 from boardman.forms import CategoryForm, TypeForm
 from django.conf import settings
 import os
-from PIL import Image
-import io
+# from PIL import Image
 from django.http import HttpResponseRedirect
 from boardman.models import Category, ProductType
+from dotenv import load_dotenv
+load_dotenv()
 
 
 MEDIA_PATH = settings.MEDIA_ROOT
@@ -38,14 +39,51 @@ def admin_inventory_type(request):
     })
 
 
+def admin_inventory_category_delete(request, category_id):
+    if request.method == "DELETE":
+        print('____category_id_____', category_id)
+        category = Category.objects.get(id=category_id)
+        # category.delete()
+        return redirect('admin-inventory-category')
+
+
+def admin_inventory_category_edit(request, category_id):
+
+    # print('categoryId', categoryId)
+    category = Category.objects.get(id=category_id)
+
+    media_root_path = f"{os.getenv("IMAGE_URL_HEAD")}"
+    category_instance = {
+        "id": category.id,
+        "title": category.title,
+        "image": f"{media_root_path}{category.image}",
+        "status": category.status
+    }
+
+    context_dict = {
+        'category': category_instance
+    }
+
+    return render(
+        request,
+        'boardman/inventory/category_edit.html',
+        context_dict
+    )
+
+
 def admin_inventory_category_details(request, categoryId):
     category = Category.objects.get(id=categoryId)
 
-    print('Category:', category.image)
+    media_root_path = f"{os.getenv("IMAGE_URL_HEAD")}"
+    category_instance = {
+        "id": category.id,
+        "title": category.title,
+        "image": f"{media_root_path}{category.image}",
+        "status": category.status
+    }
 
     return render(request, 'boardman/inventory/category_details.html', {
-        'category': category,
-        'MEDIA_PATH': MEDIA_PATH
+        'category': category_instance
     })
 
 

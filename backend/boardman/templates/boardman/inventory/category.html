@@ -50,14 +50,17 @@
                     <td>
                         <div class="action-container">
                             <div class="view-container"
-                            onclick="onaHandleCategoryView(event, {{category.id}})">
+                            onclick="onaHandleCategoryView(event, '{{ category.id }}')">
                                 <img src="{% static 'images/icons/view.svg' %}" alt="view" />
                             </div>
                             <div class="edit-container">
                                 <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
                             </div>
+                            {% comment %} onclick="onHadleDeleteCategory(event, '{{ category.id }}')" {% endcomment %}
                             <div class="delete-container">
-                                <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
+                                <a href="{% url 'admin-inventory-category-delete' category.id %}">
+                                    <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
+                                </a>
                             </div>
                         </div>
                     </td>

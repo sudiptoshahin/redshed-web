@@ -132,4 +132,18 @@ function onaHandleCategoryView(event, categoryId) {
     event.preventDefault();
     // console.log('categoryId', categoryId)
     window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/details`);
-}   
+}
+
+function onHandleEditCategory(event, categoryId) {
+    
+    // console.log("__________________")
+    // console.log("___", categoryId, "___________");
+    // console.log("=========================")
+    window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/edit`);
+}
+
+function onHadleDeleteCategory(event, categoryId) {
+    // console.log('categoryId', categoryId); 
+    window.location.href = `/admin/dashboard/inventory/category/${categoryId}/delete`;
+    // window.location.reload(true);
+}
