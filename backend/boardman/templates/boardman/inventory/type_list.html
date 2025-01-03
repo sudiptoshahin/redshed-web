@@ -49,13 +49,16 @@
                     <td>{{ type.created_at }}</td>
                     <td>
                         <div class="action-container">
-                            <div class="view-container">
+                            <div class="view-container"
+                            onclick="onHandleTypeDetails(event, '{{ type.id }}');">
                                 <img src="{% static 'images/icons/view.svg' %}" alt="view" />
                             </div>
-                            <div class="edit-container">
+                            <div class="edit-container"
+                            onclick="onHandleEditType(event, '{{ type.id }}');">
                                 <img src="{% static 'images/icons/edit.svg' %}" alt="view" />
                             </div>
-                            <div class="delete-container">
+                            <div class="delete-container"
+                                onclick="onHandleDeleteType(event, '{{ type.id }}');">
                                 <img src="{% static 'images/icons/delete.svg' %}" alt="view" />
                             </div>
                         </div>

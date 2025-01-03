@@ -143,3 +143,22 @@ function onHadleDeleteCategory(event, categoryId) {
     window.location.href = `/admin/dashboard/inventory/category/${categoryId}/delete`;
     // window.location.reload(true);
 }
+
+function onHandleDeleteType(event, typeId) {
+    // console.log('typeId', typeId);
+    window.location.href = `/admin/dashboard/inventory/type/${typeId}/delete`;
+}
+
+function onHandleEditType(event, typeId) {
+    window.location.replace(`/admin/dashboard/inventory/type/${typeId}/edit`);
+}
+
+function onHandleTypeList(event) {
+    event.preventDefault();
+    window.location.replace('/admin/dashboard/inventory/type');
+}
+
+function onHandleTypeDetails(event, typeId) {
+    event.preventDefault();
+    window.location.replace(`/admin/dashboard/inventory/type/${typeId}/details`);
+}

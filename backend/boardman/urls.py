@@ -47,11 +47,32 @@ urlpatterns = [
         name='admin-inventory-type-add'
     ),
 
-    # inventory-type
+    # inventory-type-list
     path(
         'dashboard/inventory/type',
-        views.admin_inventory_type,
-        name='admin-inventory-type'
+        views.admin_inventory_type_list,
+        name='admin-inventory-type-list'
+    ),
+
+    # inventory-type-details
+    path(
+        'dashboard/inventory/type/<int:type_id>/details',
+        views.admin_inventory_type_details,
+        name='admin-inventory-type-details'
+    ),
+    
+    # inventory-type-edit
+    path(
+        'dashboard/inventory/type/<int:type_id>/edit',
+        views.admin_inventory_type_edit,
+        name='admin-inventory-type-edit'
+    ),
+    
+    # inventory-type-delete
+    path(
+        'dashboard/inventory/type/<int:type_id>/delete',
+        views.admin_inventory_type_delete,
+        name='admin-inventory-type-delete'
     ),
 
     # inventory-products

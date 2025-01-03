@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 # from django.contrib.auth import urls
 # from django.contrib.auth import authenticate, login, logout
 from boardman.forms import CategoryForm, TypeForm
-from django.conf import settings
+# from django.conf import settings
 import os
 # from PIL import Image
 from django.http import HttpResponseRedirect
@@ -11,7 +11,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-MEDIA_PATH = settings.MEDIA_ROOT
+# MEDIA_PATH = settings.MEDIA_ROOT
+MEDIA_ROOT_PATH = f"{os.getenv("IMAGE_URL_HEAD")}"
 
 
 def admin_login(request):
@@ -22,7 +23,69 @@ def admin_dashboard(request):
     return render(request, 'boardman/overview.html')
 
 
-def admin_inventory_type(request):
+def admin_inventory_type_details(request, type_id):
+    type = ProductType.objects.get(id=type_id)
+    categories = Category.objects.all()
+
+    type_instance = {
+        "id": type.id,
+        "title": type.title,
+        "image": f"{MEDIA_ROOT_PATH}{type.image}",
+        "status": type.status
+    }
+
+    context_dict = {
+        'type': type_instance,
+        'categories': categories
+    }
+
+    return render(
+        request,
+        'boardman/inventory/type_details.html',
+        context_dict
+    )
+
+
+def admin_inventory_type_edit(request, type_id):
+    type = ProductType.objects.get(id=type_id)
+    categories = Category.objects.all()
+
+    type_instance = {
+        "id": type.id,
+        "title": type.title,
+        "image": f"{MEDIA_ROOT_PATH}{type.image}",
+        "status": type.status
+    }
+
+    type_form = None
+
+    if request.method == "POST" and request.FILES:
+        type_form = TypeForm(request.POST, request.FILES, instance=type)
+        if type_form.is_valid():
+            type_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard/inventory/type')
+    if request.method == "POST":
+        type_form = TypeForm(request.POST, instance=type)
+        if type_form.is_valid():
+            type_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard/inventory/type')
+
+    context_dict = {
+        'type': type_instance,
+        'categories': categories
+    }
+
+    return render(request, 'boardman/inventory/type_edit.html', context_dict)
+
+
+def admin_inventory_type_delete(request, type_id):
+    print('____type_id_____', type_id)
+    productType = ProductType.objects.get(id=type_id)
+    productType.delete()
+    return redirect('admin-inventory-type-list')
+
+
+def admin_inventory_type_list(request):
 
     productTypes = ProductType.objects.all()
     type_context_dict = {
@@ -33,7 +96,7 @@ def admin_inventory_type(request):
     print(type_context_dict)
 
     # data that needs to pass in context dictionary
-    return render(request, 'boardman/inventory/type.html', {
+    return render(request, 'boardman/inventory/type_list.html', {
         'data': type_context_dict["data"],
         'headers': type_context_dict["table_headers"]
     })
@@ -51,11 +114,10 @@ def admin_inventory_category_edit(request, category_id):
     # print('categoryId', categoryId)
     category = Category.objects.get(id=category_id)
 
-    media_root_path = f"{os.getenv("IMAGE_URL_HEAD")}"
     category_instance = {
         "id": category.id,
         "title": category.title,
-        "image": f"{media_root_path}{category.image}",
+        "image": f"{MEDIA_ROOT_PATH}{category.image}",
         "status": category.status
     }
 
@@ -82,11 +144,10 @@ def admin_inventory_category_edit(request, category_id):
 def admin_inventory_category_details(request, categoryId):
     category = Category.objects.get(id=categoryId)
 
-    media_root_path = f"{os.getenv("IMAGE_URL_HEAD")}"
     category_instance = {
         "id": category.id,
         "title": category.title,
-        "image": f"{media_root_path}{category.image}",
+        "image": f"{MEDIA_ROOT_PATH}{category.image}",
         "status": category.status
     }
 
