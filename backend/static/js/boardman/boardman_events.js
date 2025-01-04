@@ -130,7 +130,6 @@ function onHandleCategoryList(event) {
 
 function onaHandleCategoryView(event, categoryId) {
     event.preventDefault();
-    // console.log('categoryId', categoryId)
     window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/details`);
 }
 
@@ -139,13 +138,10 @@ function onHandleEditCategory(event, categoryId) {
 }
 
 function onHadleDeleteCategory(event, categoryId) {
-    // console.log('categoryId', categoryId); 
     window.location.href = `/admin/dashboard/inventory/category/${categoryId}/delete`;
-    // window.location.reload(true);
 }
 
 function onHandleDeleteType(event, typeId) {
-    // console.log('typeId', typeId);
     window.location.href = `/admin/dashboard/inventory/type/${typeId}/delete`;
 }
 
@@ -161,4 +157,14 @@ function onHandleTypeList(event) {
 function onHandleTypeDetails(event, typeId) {
     event.preventDefault();
     window.location.replace(`/admin/dashboard/inventory/type/${typeId}/details`);
+}
+
+function onHandleAddProduct(event) {
+    event.preventDefault();
+    window.location.replace(`/admin/dashboard/inventory/product/add`);
+}
+
+function onHandleAddProductCancel(event) {
+    event.preventDefault();
+    window.location.replace(`/admin/dashboard/inventory/product/list`);
 }

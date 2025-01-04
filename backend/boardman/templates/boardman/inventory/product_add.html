@@ -1,0 +1,151 @@
+{% extends 'boardman/layouts/menu-container.html' %}
+{% load static %}
+{% block dashboard_header_title %}
+  <h1>Add Product</h1>
+{% endblock %}
+{% block dashboard_menu_content %}
+  <div class="add-type-form">
+    <form method="POST" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="type-form-section">
+        <div>
+          {% comment %}PRODUCT TITLE{% endcomment %}
+          <div class="input-section">
+            <label for="title" class="input-label">Title</label>
+            <input name="title" class="input-text" />
+          </div>
+
+          {% comment %}PRODUCT CATEGORY{% endcomment %}
+          <div class="input-section">
+            <label class="input-label">Category</label>
+            {% comment %} value="{{ request.POST.status }}" {% endcomment %}
+            <select class="input-select" name="category_id">
+              <option value="" disabled>Select Category</option>
+              {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          {% comment %}STATUS{% endcomment %}
+          <div class="input-section">
+            <label for="" class="input-label">Status</label>
+            <div class="input-radio-container">
+              <div class="input-radio-content">
+                <input type="radio" id="active" name="status" value="active" class="input-radio" />
+                <label for="active">Active</label>
+              </div>
+              <div class="input-radio-content">
+                <input type="radio" id="deactive" name="status" value="deactive" class="input-radio" />
+                <label for="deactive">Deactive</label>
+              </div>
+            </div>
+          </div>
+
+          {% comment %}DISCOUNT IN PERCENTAGE{% endcomment %}
+          <div class="input-section">
+            <label for="title" class="input-label">Discount</label>
+            <input name="discount_percent" class="input-text" />
+          </div>
+
+          {% comment %}MEMBERSHIP DISCOUNT IN PERCENTAGE{% endcomment %}
+          <div class="input-section">
+            <label for="title" class="input-label">Membership Discount</label>
+            <input name="membership_discount_percent" class="input-text" />
+          </div>
+
+          {% comment %}MEMBERSHIP DISCOUNT IN PERCENTAGE{% endcomment %}
+          <div class="input-section">
+            <label for="title" class="input-label">Price</label>
+            <input name="price" class="input-text" />
+          </div>
+          <div class="input-section">
+            <label for="title" class="input-label">Description</label>
+            {% comment %} <input name="price" class="input-text" /> {% endcomment %}
+            <textarea name="description" class="input-textarea"  rows="10" cols="50"></textarea>
+          </div>
+        </div>
+
+        <div>
+          {% comment %}FEATURE IMAGE{% endcomment %}
+          <div class="input-section">
+            <h1 class="input-label">Feature image</h1>
+            <div class="upload-img">
+              <div class="input-uploaded-img">
+                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
+              </div>
+              <label class="input-img-upload">
+                <div class="input-img-icon">
+                  <img src="{% static 'images/icons/upload.svg' %}" />
+                </div>
+                <input type="file" id="feature_image" name="feature_image" hidden onchange="onChangeImageInput(event)" />
+              </label>
+            </div>
+            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+          </div>
+
+          {% comment %}PRODUCTS IMAGES{% endcomment %}
+          <div class="input-section mt-50px">
+            <h1 class="input-label">Product image 1</h1>
+            <div class="upload-img">
+              <div class="input-uploaded-img">
+                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
+              </div>
+              <label class="input-img-upload">
+                <div class="input-img-icon">
+                  <img src="{% static 'images/icons/upload.svg' %}" />
+                </div>
+                <input type="file" id="product_image_1" name="product_image_1" hidden onchange="onChangeImageInput(event)" />
+              </label>
+            </div>
+            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+          </div>
+
+          {% comment %}PRODUCTS IMAGES{% endcomment %}
+          <div class="input-section mt-50px">
+            <h1 class="input-label">Product image 2</h1>
+            <div class="upload-img">
+              <div class="input-uploaded-img">
+                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
+              </div>
+              <label class="input-img-upload">
+                <div class="input-img-icon">
+                  <img src="{% static 'images/icons/upload.svg' %}" />
+                </div>
+                <input type="file" id="product_image_2" name="product_image_2" hidden onchange="onChangeImageInput(event)" />
+              </label>
+            </div>
+            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+          </div>
+
+          {% comment %}PRODUCTS IMAGES{% endcomment %}
+          <div class="input-section mt-50px">
+            <h1 class="input-label">Product image 3</h1>
+            <div class="upload-img">
+              <div class="input-uploaded-img">
+                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
+              </div>
+              <label class="input-img-upload">
+                <div class="input-img-icon">
+                  <img src="{% static 'images/icons/upload.svg' %}" />
+                </div>
+                <input type="file" id="product_image_3" name="product_image_3" hidden onchange="onChangeImageInput(event)" />
+              </label>
+            </div>
+            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="btn-cancel" type="button" onclick="onHandleAddProductCancel(event)">Cancel</button>
+        <button class="btn-submit" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

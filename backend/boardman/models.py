@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 # from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import AbstractUser
+from django.utils.text import slugify
 
 
 class Category(models.Model):
@@ -30,21 +31,41 @@ class ProductType(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
-    slug = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, blank=True, null=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT)
-    type = models.ForeignKey('ProductType', on_delete=models.PROTECT)
     status = models.BooleanField()
-    main_images = models.CharField(max_length=100, blank=True, null=True)
+    feature_image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='uploaded_img/'
+    )
+
+    # ArrayField is only for postgresql
     # sub_images = ArrayField(
     #     models.CharField(max_length=100, blank=True, null=True),
     #     size=8
     # )
-    sub_images = models.CharField(max_length=100, blank=True, null=True)
+    # sub_images = models.CharField(max_length=100, blank=True, null=True)
+    product_image_1 = models.ImageField(null=True,
+                                        blank=True,
+                                        upload_to='uploaded_img/')
+    product_image_2 = models.ImageField(null=True,
+                                        blank=True,
+                                        upload_to='uploaded_img/')
+    product_image_3 = models.ImageField(null=True,
+                                        blank=True,
+                                        upload_to='uploaded_img/')
     description = models.TextField(blank=True, null=True)
-    membership_price = models.FloatField(blank=True, null=True)
-    price = models.FloatField(blank=False, null=False)
+    discount_percent = models.FloatField(blank=True, null=True)
+    membership_discount_percent = models.FloatField(blank=True, null=True)
+    price = models.FloatField(blank=False, null=False) 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Product, self).save(*args, **kwargs)
 
 
 # user as customer

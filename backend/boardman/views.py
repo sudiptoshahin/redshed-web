@@ -23,6 +23,30 @@ def admin_dashboard(request):
     return render(request, 'boardman/overview.html')
 
 
+def admin_inventory_product_add(request):
+    categories = Category.objects.all()
+
+    if request.method == "POST":
+        print('___POST___', request.POST)
+        print('___FILES___', request.FILES)
+        # product_form = ProductForm(request.POST, request.FILES)
+        # if product_form.is_valid():
+        #     product_form.save(commit=True)
+        #     return HttpResponseRedirect('/admin/dashboard/inventory/product/list')
+        # else:
+        #     print(f"___{product_form.errors}___")
+
+    context_dict = {
+        'categories': categories
+    }
+
+    return render(request, 'boardman/inventory/product_add.html', context_dict)
+
+
+def admin_inventory_product_list(request):
+    return render(request, 'boardman/inventory/product_list.html')
+
+
 def admin_inventory_type_details(request, type_id):
     type = ProductType.objects.get(id=type_id)
     categories = Category.objects.all()

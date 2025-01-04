@@ -5,6 +5,20 @@ urlpatterns = [
     path('login/', views.admin_login, name='admin-login'),
     path('dashboard/', views.admin_dashboard, name='admin-dashboard-overview'),
 
+    # inventory-product-add
+    path(
+        'dashboard/inventory/product/add',
+        views.admin_inventory_product_add,
+        name='admin-inventory-product-add'
+    ),
+
+    # inventory-product-list
+    path(
+        'dashboard/inventory/product/list',
+        views.admin_inventory_product_list,
+        name='admin-inventory-product-list'
+    ),
+
     # inventory-category-details
     path(
         'dashboard/inventory/category/<int:category_id>/delete',

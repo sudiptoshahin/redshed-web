@@ -497,21 +497,24 @@
 .input-label {
     font-family: "Lato", sans-serif;
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     padding: 5px 0;
-    font-weight: 500;
+    font-weight: 600;
     padding-bottom: 10px;
 }
 
-.input-text {
+.input-text, .input-textarea {
     width: 100%;
-    height: 30px;
     text-indent: 10px;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
 }
 
-.input-text:focus {
+.input-text {
+    height: 30px;
+}
+
+.input-text:focus, .input-textarea:focus {
     outline-color: rgba(213, 0, 0, 80);
 }
 
@@ -587,7 +590,7 @@
 }
 
 .buttons {
-    margin-top: 30px;
+    padding: 30px 0;
     display: flex;
     align-items: center;
     column-gap: 20px;
@@ -635,4 +638,8 @@
     height: 30px;
     border-radius: 10px;
     margin-top: 20px;
+}
+
+.mt-50px {
+    margin-top: 50px;
 }

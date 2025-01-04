@@ -1,5 +1,5 @@
 from django import forms
-from .models import ProductType, Category
+from boardman.models import ProductType, Category, Product
 # from django import forms
 
 
@@ -44,14 +44,42 @@ class TypeForm(forms.ModelForm):
         # Retrieve the `category_id` and fetch the Category instance
         category_id = self.cleaned_data['category_id']
         category_instance = Category.objects.get(id=category_id)
-        
+
         # Create or update the instance with the fetched `category`
         type_instance = super().save(commit=False)
         type_instance.category = category_instance
-        
+
         if commit:
             type_instance.save()
         return type_instance
+
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['title', 'slug', 'category', 'status', 'feature_image',
+                  'product_image_1', 'product_image_2', 'product_image_3',
+                  'description', 'discount_percent',
+                  'membership_discount_percent', 'price']
+        widgets = {
+            'title': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Title'
+                }
+            )
+        }
+
+    def save(self, commit=True):
+        category_id = self.cleaned_data['category_id']
+        category_instance = Category.objects.get(id=category_id)
+
+        product_instance = super().save(commit=False)
+        product_instance.category = category_instance
+
+        if commit:
+            product_instance.save()
+        return product_instance
 
 
 # class TypeForm(forms.Form):
