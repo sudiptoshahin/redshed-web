@@ -1,32 +1,88 @@
-from django.urls import path, include
-from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets
+from rest_framework import mixins
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.exceptions import NotFound
+# from rest_framework.renderers import JSONRenderer
+# from django.http import HttpResponse
+from django.http import JsonResponse
 
-# Serializers define the API representation.
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'is_staff']
-
-# ViewSets define the view behavior.
+from boardman.models import Category
+from api.serializer import CategorySerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class CategoryDetailViewSet(mixins.RetrieveModelMixin,
+                            mixins.UpdateModelMixin,
+                            mixins.DestroyModelMixin,
+                            generics.GenericAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-# Routers provide an easy way of automatically determining the URL conf.
+    def get_object(self, message="Not found the id."):
+        try:
+            return super().get_object()
+        except NotFound:
+            # Customize the response for when the object is not found
+            return JsonResponse({
+                "status": status.HTTP_404_NOT_FOUND,
+                "error": {
+                    "message": message
+                },
+            })
+
+    def get(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        data = serializer.data
+        # if instance is None:
+        #     return JsonResponse({
+        #         "status": status.HTTP_404_NOT_FOUND,
+        #         "error": "salkjalkj",
+        #         "message": "Category not found!"
+        #     })
+        print(f"instance: {instance}")
+
+        return JsonResponse({
+            "status": status.HTTP_200_OK,
+            "payload": data,
+            "message": "Category retrive successfully."
+        })
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
 
-router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
+class CategoryViewSet(mixins.ListModelMixin,
+                      mixins.CreateModelMixin,
+                      generics.GenericAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
-urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', 
-                              namespace='rest_framework'))
-]
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        data = serializer.data
+        return JsonResponse({
+            "status": status.HTTP_200_OK,
+            "payload": data,
+            "message": "Get category list successfully!"
+        }, status=status.HTTP_200_OK)
+
+    def create(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        return Response({
+            "status": status.HTTP_201_CREATED,
+            "payload": serializer.data,
+            "message": "Category created successfully!"
+        }, status=status.HTTP_201_CREATED)
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request)

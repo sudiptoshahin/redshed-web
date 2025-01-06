@@ -10,8 +10,10 @@ class Category(models.Model):
     # image = models.CharField(null=True, max_length=100)
     image = models.ImageField(null=True, blank=True, upload_to='uploaded_img/')
     status = models.BooleanField(default=False, null=False)
-    created_at = models.DateTimeField(default=now)
-    updated_at = models.DateTimeField(default=now)
+    # created_at = models.DateTimeField(default=now)
+    # updated_at = models.DateTimeField(default=now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
 
 class ProductType(models.Model):

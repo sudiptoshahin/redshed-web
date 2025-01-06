@@ -1,8 +1,9 @@
-from django.urls import path, include
+from django.urls import path
 from api import views
 
 urlpatterns = [
-    # path("admin/", admin.site.urls),
-    # path("admin/", include('boardman.urls'))
-    path('api-test/', include())
+
+    # Product Types
+    path('categories/', views.CategoryViewSet.as_view()),
+    path('categories/<int:pk>/', views.CategoryDetailViewSet.as_view()),
 ]
