@@ -6,7 +6,7 @@ from boardman.forms import CategoryForm, TypeForm
 import os
 # from PIL import Image
 from django.http import HttpResponseRedirect
-from boardman.models import Category, ProductType
+from boardman.models import Category, ProductType, Product
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -24,7 +24,7 @@ def admin_dashboard(request):
 
 
 def admin_inventory_product_add(request):
-    categories = Category.objects.all()
+    categories = Product.objects.all()
 
     if request.method == "POST":
         print('___POST___', request.POST)

@@ -83,14 +83,14 @@ function getFileName(name) {
     return tempFileName;
 }
 
-function handleCroppedBtn(event) {
-    const imageInput = document.getElementById('type_upload_img');
-    const catImageInput = document.getElementById('cat_upload_img');
+function handleCroppedBtn(event, containerId) {
+    event.preventDefault();
+    const imageInput = document.getElementById(containerId);
+    // const catImageInput = document.getElementById('cat_upload_img');
     
     const file_name = `${Date.now()}`;
 
     const croppedImgContainer = document.getElementById('cropped_img');
-    event.preventDefault();
     if (!cropperInstance) {
         console.error('Cropper instance is not available.');
         return;
@@ -105,9 +105,12 @@ function handleCroppedBtn(event) {
             });
             // croppedImageData = file;
             console.log('cropped_img', file);
-            if (imageInput === null) {
-                catImageInput.value = file;
-            } if (catImageInput === null) {
+            // if (imageInput === null) {
+            //     catImageInput.value = file;
+            // } if (catImageInput === null) {
+            //     imageInput.value = file;
+            // }
+            if (imageInput !== null) {
                 imageInput.value = file;
             }
         }
