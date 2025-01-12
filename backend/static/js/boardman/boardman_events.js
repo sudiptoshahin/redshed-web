@@ -48,8 +48,9 @@ function imageCropper(el) {
 
 
 
-function onChangeImageInput(event) {
-    imagePreviewContainer = document.getElementById('type_add_image_container');
+function onChangeImageInput(event, containerId) {
+    event.preventDefault();
+    imagePreviewContainer = document.getElementById(containerId);
 
     const uploaded_file = event.target.files[0];
 
@@ -77,48 +78,101 @@ function getFileName(name) {
     if (tempFileName === "" || tempFileName === null) {
         tempFileName = String(Date.now());
     };
-    
+
     tempFileName = tempFileName.toLowerCase().split(" ").join("_");
     tempFileName = `${tempFileName}_${Date.now()}`;
     return tempFileName;
 }
 
-function handleCroppedBtn(event, containerId) {
-    event.preventDefault();
-    const imageInput = document.getElementById(containerId);
-    // const catImageInput = document.getElementById('cat_upload_img');
-    
-    const file_name = `${Date.now()}`;
+// function handleCroppedBtn(event, containerId) {
+//     event.preventDefault();
+//     // here default parent container is always input-section
+//     const parentContainer = document.getElementsByClassName('upload-img');
+//     const imageInput = document.getElementById(containerId);
+//     // const catImageInput = document.getElementById('cat_upload_img');
 
-    const croppedImgContainer = document.getElementById('cropped_img');
+//     const file_name = `${Date.now()}`;
+
+//     const croppedImgContainer = document.getElementById('cropped_img');
+//     if (!cropperInstance) {
+//         console.error('Cropper instance is not available.');
+//         return;
+//     }
+
+//     const croppedCanvas = cropperInstance.getCroppedCanvas();
+//     const tempCroppedImage = croppedCanvas.toDataURL('image/png');
+//     croppedCanvas.toBlob((blob) => {
+//         if (blob) {
+//             const file = new File([blob], `${file_name}.jpg`, {
+//                 type: blob.type,
+//             });
+//             // croppedImageData = file;
+//             console.log('cropped_img', file);
+//             // if (imageInput === null) {
+//             //     catImageInput.value = file;
+//             // } if (catImageInput === null) {
+//             //     imageInput.value = file;
+//             // }
+//             if (imageInput !== null) {
+//                 imageInput.value = file;
+//             }
+//         }
+//     }, 'image/jpg');
+
+//     croppedImgContainer.src = tempCroppedImage;
+//     croppedImgContainer.style.display = 'block';
+
+// }
+
+function handleCroppedBtn(event, containerId, parentContainerId) {
+    event.preventDefault();
+
+    // here default parent container is always input-section
+    let parentContainer = document.getElementById(parentContainerId);
+    let imageInput = document.getElementById(containerId);
+
+    let file_name = `${Date.now()}`;
+    let croppedImgContainer = document.createElement('img');
+
+    if (!parentContainer) {
+        console.error(`Error parent container with ${parentContainerId} not found`);
+        return;
+    }
+
     if (!cropperInstance) {
         console.error('Cropper instance is not available.');
         return;
     }
 
     const croppedCanvas = cropperInstance.getCroppedCanvas();
-    const tempCroppedImage = croppedCanvas.toDataURL('image/png');
+    const tempCroppedImage = croppedCanvas.toDataURL('image/jpg');
+
     croppedCanvas.toBlob((blob) => {
         if (blob) {
             const file = new File([blob], `${file_name}.jpg`, {
                 type: blob.type,
             });
-            // croppedImageData = file;
-            console.log('cropped_img', file);
-            // if (imageInput === null) {
-            //     catImageInput.value = file;
-            // } if (catImageInput === null) {
-            //     imageInput.value = file;
-            // }
-            if (imageInput !== null) {
-                imageInput.value = file;
-            }
-        }
-    }, 'image/jpg');
 
+            // OPTIONAL: If you want to send the file to a server or process it further
+            // You CANNOT set it directly to an input's value
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            imageInput.files = dataTransfer.files;
+        }
+    }, 'image/jpeg');
+
+    croppedImgContainer.id = file_name;
+    croppedImgContainer.className = 'cropped-img';
     croppedImgContainer.src = tempCroppedImage;
     croppedImgContainer.style.display = 'block';
+    parentContainer.appendChild(croppedImgContainer);
+    // console.log('croppedImgContainer', croppedImgContainer);
+    // console.log({ 'container':containerId, 'parent': parentContainerId, 'cropperImgCOntainre': croppedImgContainer });
 
+    cropperInstance.destroy();
+    parentContainer = null;
+    imageInput = null;
+    croppedImgContainer = null;
 }
 
 function onHandleAddTypeCancel(event) {

@@ -19,7 +19,7 @@
           {% comment %}PRODUCT CATEGORY{% endcomment %}
           <div class="input-section">
             <label class="input-label">Category</label>
-            {% comment %} value="{{ request.POST.status }}" {% endcomment %}
+            {% comment %}value="{{ request.POST.status }}"{% endcomment %}
             <select class="input-select" name="category_id">
               <option value="" disabled>Select Category</option>
               {% for category in categories %}
@@ -63,81 +63,85 @@
           <div class="input-section">
             <label for="title" class="input-label">Description</label>
             {% comment %} <input name="price" class="input-text" /> {% endcomment %}
-            <textarea name="description" class="input-textarea"  rows="10" cols="50"></textarea>
+            <textarea name="description" class="input-textarea" rows="10" cols="50"></textarea>
           </div>
         </div>
 
         <div>
           {% comment %}FEATURE IMAGE{% endcomment %}
           <div class="input-section">
-            <h1 class="input-label">Feature image</h1>
-            <div class="upload-img">
-              <div class="input-uploaded-img">
-                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
-                <button class="crop-btn" onclick="handleCroppedBtn(event, 'feature_image')">Crop</button>
-              </div>
-              <label class="input-img-upload">
-                <div class="input-img-icon">
-                  <img src="{% static 'images/icons/upload.svg' %}" />
+            <div id="feature-img-container">
+              <h1 class="input-label">Feature image</h1>
+              <div class="upload-img">
+                <div class="input-uploaded-img">
+                  <img id="feature_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                  <button class="crop-btn" onclick="handleCroppedBtn(event, 'feature_image', 'feature-img-container')">Crop</button>
                 </div>
-                <input type="file" id="feature_image" name="feature_image" hidden onchange="onChangeImageInput(event)" />
-              </label>
+                <label class="input-img-upload">
+                  <div class="input-img-icon">
+                    <img src="{% static 'images/icons/upload.svg' %}" />
+                  </div>
+                  <input type="file" id="feature_image" name="feature_image" hidden onchange="onChangeImageInput(event, 'feature_add_image_container')" />
+                </label>
+              </div>
             </div>
-            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
           </div>
 
-          {% comment %}PRODUCTS IMAGES{% endcomment %}
+          {% comment %}PRODUCTS IMAGES 1{% endcomment %}
           <div class="input-section mt-50px">
-            <h1 class="input-label">Product image 1</h1>
-            <div class="upload-img">
-              <div class="input-uploaded-img">
-                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
-                <button class="crop-btn" onclick="handleCroppedBtn(event, 'product_image_1')">Crop</button>
-              </div>
-              <label class="input-img-upload">
-                <div class="input-img-icon">
-                  <img src="{% static 'images/icons/upload.svg' %}" />
+            <div id="product_img_1_container">
+              <h1 class="input-label">Product image 1</h1>
+              <div class="upload-img">
+                <div class="input-uploaded-img">
+                  <img id="product_add_image1_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                  <button class="crop-btn" onclick="handleCroppedBtn(event, 'product_image_1', 'product_img_1_container')">Crop</button>
                 </div>
-                <input type="file" id="product_image_1" name="product_image_1" hidden onchange="onChangeImageInput(event)" />
-              </label>
+                <label class="input-img-upload">
+                  <div class="input-img-icon">
+                    <img src="{% static 'images/icons/upload.svg' %}" />
+                  </div>
+                  <input type="file" id="product_image_1" name="product_image_1" hidden onchange="onChangeImageInput(event, 'product_add_image1_container')" />
+                </label>
+              </div>
             </div>
-            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
           </div>
 
-          {% comment %}PRODUCTS IMAGES{% endcomment %}
+          {% comment %}PRODUCTS IMAGES 2{% endcomment %}
           <div class="input-section mt-50px">
-            <h1 class="input-label">Product image 2</h1>
-            <div class="upload-img">
-              <div class="input-uploaded-img">
-                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
-                <button class="crop-btn" onclick="handleCroppedBtn(event, 'product_image_2')">Crop</button>
-              </div>
-              <label class="input-img-upload">
-                <div class="input-img-icon">
-                  <img src="{% static 'images/icons/upload.svg' %}" />
+            <div id="product_img_2_container">
+              <h1 class="input-label">Product image 2</h1>
+              <div class="upload-img">
+                <div class="input-uploaded-img">
+                  <img id="product_add_image2_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                  <button class="crop-btn" onclick="handleCroppedBtn(event, 'product_image_2', 'product_img_2_container')">Crop</button>
                 </div>
-                <input type="file" id="product_image_2" name="product_image_2" hidden onchange="onChangeImageInput(event)" />
-              </label>
+                <label class="input-img-upload">
+                  <div class="input-img-icon">
+                    <img src="{% static 'images/icons/upload.svg' %}" />
+                  </div>
+                  <input type="file" id="product_image_2" name="product_image_2" hidden onchange="onChangeImageInput(event, 'product_add_image2_container')" />
+                </label>
+              </div>
             </div>
-            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
           </div>
 
-          {% comment %}PRODUCTS IMAGES{% endcomment %}
+          {% comment %}PRODUCTS IMAGES 3{% endcomment %}
           <div class="input-section mt-50px">
-            <h1 class="input-label">Product image 3</h1>
-            <div class="upload-img">
-              <div class="input-uploaded-img">
-                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
-                <button class="crop-btn" onclick="handleCroppedBtn(event, 'product_image_3')">Crop</button>
-              </div>
-              <label class="input-img-upload">
-                <div class="input-img-icon">
-                  <img src="{% static 'images/icons/upload.svg' %}" />
+            <div id="product_img_3_container">
+              <h1 class="input-label">Product image 3</h1>
+              <div class="upload-img">
+                <div class="input-uploaded-img">
+                  <img id="product_add_image3_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                  <button class="crop-btn" onclick="handleCroppedBtn(event, 'product_image_3', 'product_img_3_container')">Crop</button>
                 </div>
-                <input type="file" id="product_image_3" name="product_image_3" hidden onchange="onChangeImageInput(event)" />
-              </label>
+                <label class="input-img-upload">
+                  <div class="input-img-icon">
+                    <img src="{% static 'images/icons/upload.svg' %}" />
+                  </div>
+                  <input type="file" id="product_image_3" name="product_image_3" hidden onchange="onChangeImageInput(event, 'product_add_image3_container')" />
+                </label>
+              </div>
             </div>
-            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
           </div>
         </div>
       </div>
