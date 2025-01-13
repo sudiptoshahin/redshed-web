@@ -46,25 +46,26 @@
 
         <div>
           <div class="input-section">
-            <h1 class="input-label">Add image</h1>
-            <div class="upload-img">
-              <div class="input-uploaded-img">
-                <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
-                <button class="crop-btn" onclick="handleCroppedBtn(event)">Crop</button>
-              </div>
-              <label class="input-img-upload">
-                <div class="input-img-icon">
-                  <img src="{% static 'images/icons/upload.svg' %}" />
+            <div id="type-img-container">
+              <h1 class="input-label">Add image</h1>
+              <div class="upload-img">
+                <div class="input-uploaded-img">
+                  <img id="type_add_image_container" class="uploaded-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
+                  <button class="crop-btn" onclick="handleCroppedBtn(event, 'type_upload_img', 'type-img-container')">Crop</button>
                 </div>
-                <input type="file" 
-                  id="type_upload_img" 
-                  name="image" 
-                  hidden
-                  onchange="onChangeImageInput(event)"
-                 />
-              </label>
+                <label class="input-img-upload">
+                  <div class="input-img-icon">
+                    <img src="{% static 'images/icons/upload.svg' %}" />
+                  </div>
+                  <input type="file" 
+                    id="type_upload_img" 
+                    name="image" 
+                    hidden
+                    onchange="onChangeImageInput(event, 'type_add_image_container')"
+                   />
+                </label>
+              </div>
             </div>
-            <img id="cropped_img" class="cropped-img" src="{% static 'images/blank_image.jpg' %}" alt="image" />
           </div>
         </div>
       </div>

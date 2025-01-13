@@ -42,12 +42,6 @@ class Product(models.Model):
         upload_to='uploaded_img/'
     )
 
-    # ArrayField is only for postgresql
-    # sub_images = ArrayField(
-    #     models.CharField(max_length=100, blank=True, null=True),
-    #     size=8
-    # )
-    # sub_images = models.CharField(max_length=100, blank=True, null=True)
     product_image_1 = models.ImageField(null=True,
                                         blank=True,
                                         upload_to='uploaded_img/')

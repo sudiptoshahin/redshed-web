@@ -9,8 +9,12 @@ class TypeSerializer(serializers.Serializer):
         allow_blank=False,
         max_length=50
     )
+    category = serializers.CharField(required=True, allow_blank=False)
     image = serializers.ImageField(required=False, allow_null=True)
     status = serializers.BooleanField(default=False)
+
+    # def get_category(self, obj):
+    #     return obj.category['id']
 
 
 class CategorySerializer(serializers.Serializer):
