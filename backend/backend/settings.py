@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'inertia',
     'boardman',
     'client'
 ]
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "inertia.middleware.InertiaMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -133,9 +135,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-AUTH_USER_MODEL = "boardman.Customer"  # new
+AUTH_USER_MODEL = "boardman.Customer"
 
 
 """
-# all ENV's
+# Inertia header and cookie
 """
+CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
+CSRF_COOKIE_NAME = 'XSRF-TOKEN'
