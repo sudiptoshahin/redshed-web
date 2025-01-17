@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 # from django.contrib.auth import urls
 # from django.contrib.auth import authenticate, login, logout
-from boardman.forms import CategoryForm, TypeForm
+from boardman.forms import CategoryForm, ProductForm, TypeForm
 # from django.conf import settings
 import os
 # from PIL import Image
@@ -24,17 +24,26 @@ def admin_dashboard(request):
 
 
 def admin_inventory_product_add(request):
-    categories = Product.objects.all()
+    categories = Category.objects.all()
 
     if request.method == "POST":
-        print('___POST___', request.POST)
-        print('___FILES___', request.FILES)
-        # product_form = ProductForm(request.POST, request.FILES)
-        # if product_form.is_valid():
-        #     product_form.save(commit=True)
-        #     return HttpResponseRedirect('/admin/dashboard/inventory/product/list')
-        # else:
-        #     print(f"___{product_form.errors}___")
+        # print('___POST___', request.POST)
+        # print('___FILES___', request.FILES)
+        product_data = request.POST.copy()
+        
+        category_instance = Category.objects.get(
+            id=product_data['category_id']
+        )
+        product_data['category'] = product_data.pop('category_id')
+        product_data['category'] = category_instance
+
+        product_form = ProductForm(product_data, request.FILES)
+
+        if product_form.is_valid():
+            product_form.save(commit=True)
+            return HttpResponseRedirect('/admin/dashboard')
+        else:
+            print(f"___{product_form.errors}___")
 
     context_dict = {
         'categories': categories
@@ -44,7 +53,18 @@ def admin_inventory_product_add(request):
 
 
 def admin_inventory_product_list(request):
-    return render(request, 'boardman/inventory/product_list.html')
+    products = Product.objects.all()
+
+    context_dict = {
+        "table_headers": ['Title', 'Status', 'Created At', 'Actions'],
+        "data": products
+    }
+
+    return render(
+        request,
+        'boardman/inventory/product_list.html',
+        context_dict
+    )
 
 
 def admin_inventory_type_details(request, type_id):

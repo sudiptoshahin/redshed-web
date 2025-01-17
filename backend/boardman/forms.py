@@ -71,11 +71,11 @@ class ProductForm(forms.ModelForm):
         }
 
     def save(self, commit=True):
-        category_id = self.cleaned_data['category_id']
-        category_instance = Category.objects.get(id=category_id)
+        # category_id = self.cleaned_data['category_id']
+        # category_instance = Category.objects.get(id=category_id)
 
         product_instance = super().save(commit=False)
-        product_instance.category = category_instance
+        # product_instance.category = category_instance
 
         if commit:
             product_instance.save()
