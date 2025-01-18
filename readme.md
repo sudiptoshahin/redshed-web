@@ -6,3 +6,13 @@
 
 
 ![landing-page](landing.png "landing")
+
+### For run inertia-vue in backend
+npm install
+npm run buid
+
+python manage.py collectstatic
+
+npm run dev
+python manage.py runserver
+

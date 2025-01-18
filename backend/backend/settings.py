@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'rest_framework',
     'inertia',
+    'django_vite',
     'boardman',
     'client'
 ]
@@ -52,7 +53,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "inertia.middleware.InertiaMiddleware",
+    'inertia.middleware.InertiaMiddleware',
 ]
 
 ROOT_URLCONF = "backend.urls"
@@ -60,7 +61,7 @@ ROOT_URLCONF = "backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -130,6 +131,23 @@ STATICFILES_DIRS = [
     MEDIA_ROOT,
 ]
 
+# INERTIA CONFIG
+INERTIA_LAYOUT = 'base.html'
+# Where ViteJS assets are built.
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static" / "dist"
+# If use HMR or not.
+DJANGO_VITE_DEV_MODE = DEBUG
+# Name of static files folder (after called python manage.py collectstatic)
+STATIC_ROOT = BASE_DIR / "static"
+# Include DJANGO_VITE_ASSETS_PATH into STATICFILES_DIRS to be copied inside
+# when run command python manage.py collectstatic
+
+# INERTIA CONFIG ENDS
+STATICFILES_DIRS = [
+    DJANGO_VITE_ASSETS_PATH,
+    # BASE_DIR / "static",
+    MEDIA_ROOT,
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

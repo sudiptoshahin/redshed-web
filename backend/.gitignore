@@ -4,3 +4,8 @@ admin/__pycache__/
 */__pycache__/
 */pyc
 media/
+node_modules/
+package-lock.json
+static/dist/
+static/admin/
+static/main-*.js

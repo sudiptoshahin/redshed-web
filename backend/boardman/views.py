@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from boardman.models import Category, ProductType, Product
 from dotenv import load_dotenv
 load_dotenv()
+from inertia import render
 
 
 # MEDIA_PATH = settings.MEDIA_ROOT
@@ -21,6 +22,12 @@ def admin_login(request):
 
 def admin_dashboard(request):
     return render(request, 'boardman/overview.html')
+
+
+def test_vue(request):
+    return render(request, 'Index', props={
+        'events': "from inertia."
+    })
 
 
 def admin_inventory_product_add(request):

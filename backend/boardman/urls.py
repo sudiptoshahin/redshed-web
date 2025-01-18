@@ -5,6 +5,13 @@ urlpatterns = [
     path('login/', views.admin_login, name='admin-login'),
     path('dashboard/', views.admin_dashboard, name='admin-dashboard-overview'),
 
+
+    path(
+        'test-vue/',
+        views.test_vue,
+        name='test_vue'
+    ),
+
     # inventory-product-add
     path(
         'dashboard/inventory/product/add',
