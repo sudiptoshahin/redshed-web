@@ -1,11 +1,15 @@
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import dynamicImport from 'vite-plugin-dynamic-import';
+import svgLoader from 'vite-svg-loader';
 
 module.exports = {
   plugins: [
     vue(),
-    dynamicImport()
+    dynamicImport(),
+    svgLoader({
+      defaultImport: 'url'
+    })
   ],
   root: resolve('./static/src'),
   base: '/static/',
@@ -20,6 +24,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.json', '.vue', 'ts'],
+    // alias: {
+    //   '@images': resolve(__dirname, 'static/images'),
+    // }
   },
   build: {
     outDir: resolve('./static/dist'),

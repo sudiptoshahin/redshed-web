@@ -9,12 +9,14 @@
         
         {% vite_hmr_client %}
         {% vite_asset 'js/main.js' %}
+        {% vite_asset 'css/boardman/main.css' %}
         <title>Django inertia-1</title>
         
         <link rel="stylesheet" href="">
     </head>
     <body>
-        
-        {% block inertia %}{% endblock %}
+        <div>
+            {% block inertia %}{% endblock %}
+        </div>
     </body>
 </html>

@@ -9,3 +9,4 @@ package-lock.json
 static/dist/
 static/admin/
 static/main-*.js
+.vite/
