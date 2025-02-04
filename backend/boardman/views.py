@@ -41,7 +41,7 @@ def admin_inventory_product_add(request):
 
         if product_form.is_valid():
             product_form.save(commit=True)
-            return HttpResponseRedirect('/admin/dashboard')
+            return HttpResponseRedirect('/admin/dashboard/inventory/product/list')
         else:
             print(f"___{product_form.errors}___")
 
