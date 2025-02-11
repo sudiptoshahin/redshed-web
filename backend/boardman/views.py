@@ -19,6 +19,10 @@ def admin_login(request):
     return render(request, 'boardman/login.html')
 
 
+def admin_user_register(request):
+    return render(request, 'boardman/admin_register.html')
+
+
 def admin_dashboard(request):
     return render(request, 'boardman/overview.html')
 
