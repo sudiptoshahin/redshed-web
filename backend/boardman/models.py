@@ -65,9 +65,25 @@ class Product(models.Model):
 
 
 # user as customer
-class Customer(AbstractUser):
-    dob = models.DateTimeField(blank=True, null=True)
-    address = models.TextField(blank=True, null=True)
-    profile_picture = models.CharField(max_length=100, blank=True, null=True)
-    user_type = models.IntegerField(default=0)
+# class Customer(AbstractUser):
+#     dob = models.DateTimeField(blank=True, null=True)
+#     address = models.TextField(blank=True, null=True)
+#     profile_picture = models.CharField(max_length=100, blank=True, null=True)
+#     user_type = models.IntegerField(default=0)
+
+class User(AbstractUser):
+    class Role(models.TextChoices):
+        ADMIN = "ADMIN", "Admin"            # admin
+        BOARDMAN = "BOARDMAN", "Boardman"   # Manager: will handle site
+        CUSTOMER = "CUSTOMER", "Customer"   # Customer: normal site user
+    
+    base_role = Role.ADMIN
+
+    role = models.CharField(max_length=50, choices=Role.choices)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
+            return super().save(*args, **kwargs)
+
 

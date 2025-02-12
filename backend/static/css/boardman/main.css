@@ -681,8 +681,8 @@
 }
 
 /* Set a style for all buttons */
-.btn-cancel,
-.btn-submit {
+.btn-register-cancel,
+.btn-register-submit {
     display: block;
     color: white;
     margin: 15px 0;
@@ -691,24 +691,24 @@
     opacity: 0.9;
 }
 
-.btn-cancel:hover,
-.btn-submit:hover {
+.btn-register-cancel:hover,
+.btn-register-submit:hover {
     opacity: 1;
 }
 
 /* Extra styles for the cancel button */
-.btn-cancel {
+.btn-register-cancel {
     background-color: #f44336;
 }
 
 /* Float cancel and signup buttons and add an equal width */
-.btn-cancel,
-.btn-submit {
+.btn-register-cancel,
+.btn-register-submit {
     width: 30%;
 
 }
 
-.btn-submit {
+.btn-register-submit {
     background-color: #04AA6D;
 }
 
@@ -726,8 +726,8 @@ hr {
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
 
-    .btn-cancel,
-    .btn-submit {
+    .btn-register-cancel,
+    .btn-register-submit {
         width: 100%;
     }
 }

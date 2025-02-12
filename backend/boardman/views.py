@@ -7,6 +7,7 @@ import os
 # from PIL import Image
 from django.http import HttpResponseRedirect
 from boardman.models import Category, ProductType, Product
+from django.contrib.auth.models import User
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -20,6 +21,13 @@ def admin_login(request):
 
 
 def admin_user_register(request):
+    if request.method == 'POST':
+        data = request.POST.copy()
+
+        
+        
+        user = User.objects.create_user()
+    
     return render(request, 'boardman/admin_register.html')
 
 
