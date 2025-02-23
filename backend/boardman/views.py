@@ -7,6 +7,7 @@ import os
 # from PIL import Image
 from django.http import HttpResponseRedirect
 from boardman.models import Category, ProductType, Product
+from django.contrib.auth.models import User
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -17,6 +18,17 @@ MEDIA_ROOT_PATH = f"{os.getenv("IMAGE_URL_HEAD")}"
 
 def admin_login(request):
     return render(request, 'boardman/login.html')
+
+
+def admin_user_register(request):
+    if request.method == 'POST':
+        data = request.POST.copy()
+
+        
+        
+        user = User.objects.create_user()
+    
+    return render(request, 'boardman/admin_register.html')
 
 
 def admin_dashboard(request):
@@ -41,7 +53,7 @@ def admin_inventory_product_add(request):
 
         if product_form.is_valid():
             product_form.save(commit=True)
-            return HttpResponseRedirect('/admin/dashboard')
+            return HttpResponseRedirect('/admin/dashboard/inventory/product/list')
         else:
             print(f"___{product_form.errors}___")
 

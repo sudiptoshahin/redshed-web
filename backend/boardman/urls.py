@@ -3,6 +3,7 @@ from boardman import views
 
 urlpatterns = [
     path('login/', views.admin_login, name='admin-login'),
+    path('register/', views.admin_user_register, name='register-admin-user'),
     path('dashboard/', views.admin_dashboard, name='admin-dashboard-overview'),
 
     # inventory-product-add
