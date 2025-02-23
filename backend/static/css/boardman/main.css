@@ -458,7 +458,9 @@
     gap: 15px;
 }
 
-.view-container, .edit-container, .delete-container {
+.view-container,
+.edit-container,
+.delete-container {
     width: auto;
     padding: 0 5px;
     border-radius: 5px;
@@ -503,7 +505,8 @@
     padding-bottom: 10px;
 }
 
-.input-text, .input-textarea {
+.input-text,
+.input-textarea {
     width: 100%;
     text-indent: 10px;
     border-radius: 5px;
@@ -514,7 +517,8 @@
     height: 30px;
 }
 
-.input-text:focus, .input-textarea:focus {
+.input-text:focus,
+.input-textarea:focus {
     outline-color: rgba(213, 0, 0, 80);
 }
 
@@ -554,8 +558,8 @@
     margin-top: 20px;
     height: 100px;
     width: 100px;
-    border-radius: 10px; 
-    display: none;   
+    border-radius: 10px;
+    display: none;
 }
 
 .input-select {
@@ -596,7 +600,8 @@
     column-gap: 20px;
 }
 
-.btn-cancel, .btn-submit {
+.btn-cancel,
+.btn-submit {
     width: 110px;
     height: 40px;
     font-family: "Lato", sans-serif;
@@ -643,3 +648,88 @@
 .mt-50px {
     margin-top: 50px;
 }
+
+/* registration */
+
+.regitration-form {
+    display: flex;
+    justify-content: center;
+}
+
+/* Full-width input fields */
+.register-text-input,
+.register-password-input {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+.register-text-input:focus,
+.register-password-input:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.action-btns {
+    /* display: flex;
+    justify-content: space-around;
+    columns: 2; */
+}
+
+/* Set a style for all buttons */
+.btn-register-cancel,
+.btn-register-submit {
+    display: block;
+    color: white;
+    margin: 15px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btn-register-cancel:hover,
+.btn-register-submit:hover {
+    opacity: 1;
+}
+
+/* Extra styles for the cancel button */
+.btn-register-cancel {
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.btn-register-cancel,
+.btn-register-submit {
+    width: 30%;
+
+}
+
+.btn-register-submit {
+    background-color: #04AA6D;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+
+    .btn-register-cancel,
+    .btn-register-submit {
+        width: 100%;
+    }
+}
+
+/** registraton ends **/
