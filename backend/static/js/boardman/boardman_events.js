@@ -26,11 +26,11 @@ function onHandleInventroyDropdown() {
 
 function onHandleAddType(event) {
     event.preventDefault();
-    window.location.replace('/admin/dashboard/inventory/type/add');
+    window.location.replace('/boardman/dashboard/inventory/type/add');
 }
 
 function onHandleAddCategory(event) {
-    window.location.replace('/admin/dashboard/inventory/category/add');
+    window.location.replace('/boardman/dashboard/inventory/category/add');
 }
 
 function imageCropper(el) {
@@ -177,51 +177,51 @@ function handleCroppedBtn(event, containerId, parentContainerId) {
 
 function onHandleAddTypeCancel(event) {
     event.preventDefault();
-    window.location.replace('/admin/dashboard/inventory/type');
+    window.location.replace('/boardman/dashboard/inventory/type');
 }
 
 function onHandleCategoryList(event) {
     event.preventDefault();
-    window.location.replace('/admin/dashboard/inventory/category');
+    window.location.replace('/boardman/dashboard/inventory/category');
 }
 
 function onaHandleCategoryView(event, categoryId) {
     event.preventDefault();
-    window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/details`);
+    window.location.replace(`/boardman/dashboard/inventory/category/${categoryId}/details`);
 }
 
 function onHandleEditCategory(event, categoryId) {
-    window.location.replace(`/admin/dashboard/inventory/category/${categoryId}/edit`);
+    window.location.replace(`/boardman/dashboard/inventory/category/${categoryId}/edit`);
 }
 
 function onHadleDeleteCategory(event, categoryId) {
-    window.location.href = `/admin/dashboard/inventory/category/${categoryId}/delete`;
+    window.location.href = `/boardman/dashboard/inventory/category/${categoryId}/delete`;
 }
 
 function onHandleDeleteType(event, typeId) {
-    window.location.href = `/admin/dashboard/inventory/type/${typeId}/delete`;
+    window.location.href = `/boardman/dashboard/inventory/type/${typeId}/delete`;
 }
 
 function onHandleEditType(event, typeId) {
-    window.location.replace(`/admin/dashboard/inventory/type/${typeId}/edit`);
+    window.location.replace(`/boardman/dashboard/inventory/type/${typeId}/edit`);
 }
 
 function onHandleTypeList(event) {
     event.preventDefault();
-    window.location.replace('/admin/dashboard/inventory/type');
+    window.location.replace('/boardman/dashboard/inventory/type');
 }
 
 function onHandleTypeDetails(event, typeId) {
     event.preventDefault();
-    window.location.replace(`/admin/dashboard/inventory/type/${typeId}/details`);
+    window.location.replace(`/boardman/dashboard/inventory/type/${typeId}/details`);
 }
 
 function onHandleAddProduct(event) {
     event.preventDefault();
-    window.location.replace(`/admin/dashboard/inventory/product/add`);
+    window.location.replace(`/boardman/dashboard/inventory/product/add`);
 }
 
 function onHandleAddProductCancel(event) {
     event.preventDefault();
-    window.location.replace(`/admin/dashboard/inventory/product/list`);
+    window.location.replace(`/boardman/dashboard/inventory/product/list`);
 }
