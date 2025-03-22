@@ -6,3 +6,16 @@
 */__pycache__/
 *.pyc
 *.sqlite3
+
+# Virtual environments
+venv/
+env/
+
+# Environment variables
+.env
+
+# Data directory
+data/
+
+# Static files
+**/static/

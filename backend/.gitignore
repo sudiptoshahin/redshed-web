@@ -6,3 +6,5 @@ admin/__pycache__/
 media/
 static/admin/
 db.*
+staticfiles/*
+/*.env

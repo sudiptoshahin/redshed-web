@@ -28,8 +28,11 @@ export default function StyleTypeSection() {
     return (
         <section>
             <div className="py-5">
-                <CategoryContainer dataList={styleCategoryData} 
-                componentType={CategoryType.styleType} showItems={3} itemGap={4} />
+                {/* <CategoryContainer dataList={styleCategoryData} 
+                    componentType={CategoryType.styleType} 
+                    showItems={3} itemGap={4} /> */}
+                <CategoryContainer dataList={styleCategoryData}
+                    componentType={CategoryType.styleType} />
             </div>
         </section>
     )

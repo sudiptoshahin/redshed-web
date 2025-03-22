@@ -13,7 +13,7 @@ load_dotenv()
 
 
 # MEDIA_PATH = settings.MEDIA_ROOT
-MEDIA_ROOT_PATH = f"{os.getenv("IMAGE_URL_HEAD")}"
+MEDIA_ROOT_PATH = f'{os.getenv("IMAGE_URL_HEAD")}'
 
 
 def admin_login(request):
