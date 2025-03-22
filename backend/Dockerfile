@@ -13,6 +13,8 @@ WORKDIR /app/backend
 # Copy the python dependency file into the container
 COPY requirements.txt .
 
+COPY static .
+
 # Install system dependencies required for GeoDjango, including 
 # compilation dependencies and geospatial libraries
 #-----------------------------------------------------------------------
